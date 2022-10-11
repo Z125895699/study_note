@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <ul class="nav">
+      <li>榴莲</li>
+      <li>苹果</li>
+      <li>橘子</li>
+      <li>香蕉</li>
+    </ul>
+    <script>
+      //定义
+      //闭包是一个容器 可以认为就是一个对象 {key:value}
+      //闭包的形成条件
+      //函数嵌套    内部函数引用外部函数的局部变量
+      //闭包的作用  延长外部函数局部变量的声明周期
+
+      //********//
+      // 循环遍历加监听
+      // 三秒钟后把所有的打印出来  定时器中的回调函数是异步任务 如果不用立即执行函数会等到for循环全部走完 i=4才执行定时器里面的回调函数
+      let lis = document.querySelector('.nav').querySelectorAll('li');
+      //绑定事件
+      for (let i = 0; i < lis.length; i++) {
+        (function (i) {
+          setInterval(() => {
+            console.log(lis[i].innerHTML);
+          }, 3000);
+        })(i);
+      }
+      // function fun() {
+      //   var num = 10
+      //   return function fn() {
+      //     console.log(num)
+      //   }
+      // }
+      // let fn = fun()
+      // fn()
+
+      let x = 10;
+      function fn() {
+        console.log(x);
+      }
+      function show(f) {
+        let x = 20;
+        f();
+      }
+      show(fn);
+    </script>
+  </body>
+</html>

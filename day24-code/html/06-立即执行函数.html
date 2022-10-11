@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //立即执行函数 不需要调用，立马能够执行的函数
+        function fn() {
+            console.log(1)
+        }
+        fn()
+            //****************//
+            //写法    也可以传递参数进去
+            // 1、(function () { })
+            // 2、(function () { }())
+            (function (a) {
+                console.log(a)
+            })(1)//第二个小括号可以看作是调用函数  里面放实参
+
+            //******************//
+
+            (function (a) {
+                console.log(a)
+            }(1))
+        //立即执行函数最大的作用就是独立创建一个作用域   里面的变量都是局部变量
+    </script>
+</body>
+
+</html>

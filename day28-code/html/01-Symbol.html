@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // Symbol   不会重复的字符串
+      let hd = Symbol('在线');
+      let bd = Symbol('dhbf');
+      console.log(hd === bd); //false
+      console.log(bd);
+      hd.name = '张迪';
+      console.log(hd);
+      console.log(hd.name); // undefined
+      //读取描述
+      console.log(hd.description); //在线
+      //显示转换为字符串
+      console.log(typeof hd.toString());
+      //转换为布尔值
+      Boolean(bd);
+      console.log(!bd); //false
+      // 不可以转换为数值
+
+      let cms = Symbol.for('hbf');
+      let cms1 = Symbol.for('hbf');
+      console.log(cms === cms1); //true
+      console.log(Symbol.keyFor(cms)); //hbf
+
+      let mySymbol = Symbol();
+
+      // 第一种
+      let a = {};
+      a[mySymbol] = 'Hello';
+      console.log(a[mySymbol]);
+
+      // 不能使用点运算符 会被当成字符串
+      a.mySymbol = 'hello';
+      console.log(a[mySymbol]); //undefind
+      console.log(a.mySymbol); //hello
+      // 第二种
+      let a = {
+        [mySymbol]: 'Hello',
+      };
+      console.log(a[mySymbol]);
+      // 第三种
+      let a = {};
+      Object.defineProperty(a, mySymbol, { value: 'Hello' });
+      console.log(a[mySymbol]);
+
+      let user1 = {
+        name: '李四',
+        key: Symbol(),
+      };
+
+      let user2 = {
+        name: '李四',
+        key: Symbol(),
+      };
+      let grade = {
+        //赋值要加[]  否则当字符串使用  不能使用点运算符  会导致属性名不是Symbol类型 而是字符串
+        [user1.key]: { js: 100, css: 89 },
+        [user2.key]: { js: 35, css: 35 },
+      };
+      console.table(grade[user2.key]);
+
+      // 常量使用Symbol
+      const COLOR_RED = Symbol('COLOR_RED');
+      const COLOR_GREEN = Symbol('COLOR_GREEN');
+
+      function getComplement(color) {
+        switch (color) {
+          case COLOR_RED:
+            return COLOR_GREEN;
+          case COLOR_GREEN:
+            return COLOR_RED;
+          default:
+            throw new Error('Undefined color');
+        }
+      }
+      console.log(getComplement(COLOR_GREEN));
+
+      let s1 = Symbol.for('fun'); //有一个登记机制
+      console.log(Symbol.keyFor(s1)); //返回一个已经登记的Symbol类型的key
+      let s2 = Symbol.for('fun');
+      console.log(s1 === s2); //true
+      console.log(Symbol.for('fun') === Symbol.for('fun')); //true
+      console.log(Symbol('fun') === Symbol('fun')); //false
+
+      class MyMatcher {
+        [Symbol.match](string) {
+          return 'hello world'.indexOf(string);
+        }
+      }
+
+      console.log('e'.match(new MyMatcher()));
+
+      class MySearch {
+        constructor(value) {
+          this.value = value;
+        }
+        [Symbol.search](string) {
+          return string.indexOf(this.value);
+        }
+      }
+      console.log('foobar'.search(new MySearch('foo'))); //0
+      console.log('foobar'.search(new MySearch('bar'))); //3
+
+      let obj = {
+        [Symbol.toPrimitive](hint) {
+          switch (hint) {
+            case 'number':
+              return 123;
+            case 'string':
+              return 'str';
+            case 'default':
+              return 'default';
+            default:
+              throw new Error();
+          }
+        },
+      };
+      console.log(2 * obj);
+    </script>
+  </body>
+</html>

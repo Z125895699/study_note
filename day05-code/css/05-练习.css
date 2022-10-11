@@ -1,0 +1,42 @@
+*{
+    padding:0;
+    margin: 0;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+ul {
+    width: 1000px;
+    height: 50px;
+    border-bottom: 8px solid orangered;
+    margin: auto;
+}
+ul li {
+    float: left;
+    margin-right: 1px;
+}
+ul li a{
+    display: block;
+    width: 100px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: gray;
+    color: #fff;
+}
+ul li a b{
+    display: none;
+}
+ul li a:hover {
+    background-color: orangered;
+    color: #000;
+}
+ul li a:hover span{
+    display: none;
+}
+ul li a:hover b{
+    display: block;
+}

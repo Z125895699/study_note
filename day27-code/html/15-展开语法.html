@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>dfhbfkdjvb</div>
+    <div>djbvoihf</div>
+    <script>
+      let arr = ['1fd', 'asff'];
+      let hd = ['dfjnf', 'bnfdk'];
+      // for (let value of hd) {
+      //     // console.log(value);
+      //     arr.push(value)
+      // }
+      // console.log(arr);
+      //展开语法合并
+      // arr = [...arr, 'dfhb', ...hd]
+      // console.log(arr);
+
+      function sum(...args) {
+        console.log(args);
+      }
+      sum(1, 2);
+      let divs = Array.from(document.querySelectorAll('div'));
+      // console.log(typeof (divs));
+      // divs.map(function (item) {
+      //     console.log(item);
+      // })
+      //数组扩展
+      console.log([...divs]);
+      [...divs].map((item) => {
+        console.log(item);
+      });
+    </script>
+  </body>
+</html>

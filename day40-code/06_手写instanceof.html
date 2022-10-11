@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function instanceOf(left, right) {
+        // 获得类型的原型
+        let prototype = right.prototype;
+        // 获得对象的原型
+        left = left.__proto__;
+        // 判断对象的类型是否等于类型的原型
+        while (true) {
+          if (left === null) console.log(false);
+          if (prototype === left) console.log(true);
+          left = left.__proto__;
+        }
+      }
+      console.log([].__proto__);
+      instanceOf([], Array);
+    </script>
+  </body>
+</html>

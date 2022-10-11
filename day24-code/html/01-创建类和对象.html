@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // let that
+    // let _that
+    // //1、创建类class   后面不要加()
+    // class Star {
+    //   //类的共有属性放到constructor
+    //   constructor(uname) {
+    //     // constructor里面的this指向的是  创建的实例化对象
+    //     console.log(this)
+    //     that = this
+    //     that.uname = uname
+    //   }
+    //   sing() {
+    //     console.log('我唱歌')
+    //   }
+    //   dance() {
+    //     //方法里面的this指向的是实例对象ldh  因为ldh调用了dance()
+    //     _that = this
+    //     console.log(this)
+    //   }
+    // }
+    // //2、利用类创建对象 类必须使用new实例化对象
+    // let ldh = new Star('刘德华')
+    // console.log(ldh.uname)
+    // console.log(that)
+    // console.log(that === ldh)
+    // ldh.dance()
+    // console.log(_that === ldh)
+    //类里面有个constructor函数，可以接受传递过来的参数，同时返回实例对象
+    //constructor函数 只要new生成实例时，就会自动调用这个函数，如果我们不写这个函数，也会自动生成这个函数
+    //类里面的函数不需要写function
+    //多个函数之间不需要添加逗号分隔
+    //es6没有变量提升，所以要先定义类 才能实例化对象
+    //共有的属性和方法一定要加this使用
+
+
+    class Person {
+      //类的静态属性
+      //给类自身添加属性
+      static test = () => {
+        console.log('类的静态属性')
+      }
+      //类的构造方法
+      constructor(name, age) {
+        console.log('构造方法被调用了')
+        this.name = name
+        this.age = age
+      }
+      //类的一般方法 定义在实例对象的原型对象上
+      showMsg() {
+        console.log(this.name, this.age)
+      }
+    }
+
+    console.log(Person)
+
+
+    let ldh = new Person('刘德华', 18)
+    console.log(ldh)
+    ldh.showMsg()
+    Person.test()
+  </script>
+</body>
+
+</html>

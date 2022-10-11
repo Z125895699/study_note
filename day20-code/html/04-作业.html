@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="submit" value="关">
+    <script>
+        // 1、获取事件
+        let ipt = document.querySelector('input')
+        // let div = document.querySelector('div')
+        // 2、注册事件 处理程序
+        let flag = 0
+        ipt.onclick = function () {
+            if (flag == 0) {
+                //获取body
+                document.body.style.backgroundColor = 'black'
+                this.value = '开'
+                flag = 1
+            } else {
+                //获取body
+                document.body.style.backgroundColor = 'green'
+                this.value = '关'
+                flag = 0
+            }
+        }
+    </script>
+</body>
+
+</html>

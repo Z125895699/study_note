@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      var arr = ['a', 'b', 'c'];
+      console.log(Object.getOwnPropertyNames(arr).sort());
+
+      var my_obj = Object.create(
+        {},
+        {
+          getFoo: {
+            value() {
+              return this.foo;
+            },
+            enumerable: false,
+          },
+        }
+      );
+      my_obj.foo = 1;
+
+      console.log(Object.getOwnPropertyNames(my_obj).sort());
+      function ParentClass() {}
+      ParentClass.prototype.inheritedMethod = function () {};
+
+      function ChildClass() {
+        this.prop = 5;
+        this.method = function () {};
+      }
+
+      ChildClass.prototype = new ParentClass();
+      let child = new ChildClass();
+      ChildClass.prototype.prototypeMethod = function () {};
+
+      console.log(Object.keys(child));
+    </script>
+  </body>
+</html>

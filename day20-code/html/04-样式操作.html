@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 1、获取元素
+        let div = document.querySelector('div')
+        //2、绑定事件、处理程序
+        div.onclick = function () {
+            //this指向调用函数，此时事件函数被div调用
+            // js里面的样式采用驼峰命名法
+            //js生成的是行内样式，css权重比较高
+            this.style.backgroundColor = 'purple'
+            this.style.width = '100px'
+        }
+    </script>
+</body>
+
+</html>

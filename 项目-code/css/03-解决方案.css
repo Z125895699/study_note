@@ -1,0 +1,98 @@
+.centent{
+    /* border: 1px solid red; */
+    margin:  0 auto;
+    /* margin居中时，必须定义宽度 */
+}
+.toubu{
+    /* border: 1px solid red; */
+    margin:  0 auto;
+    text-align: center;
+    overflow: hidden;
+}
+.toubu img{
+    margin: auto;
+    display: block;
+}
+.toubu h2{
+    font-size: 28px;
+    line-height: 50px;
+    text-align: center;
+    /* border: 1px solid red; */
+}
+/* 不用写外边距，直接写宽度百分比 这样更直接 */
+.toubu_1{
+    float: left;
+    width: 25%;
+    height: 200px;
+    /* border: 1px solid red; */
+    /* margin: 10px 100px 10px 150px; */
+}
+.toubu_2{
+    float: left;
+    width: 25%;
+    height: 200px;
+    /* border: 1px solid red; */
+    /* margin: 10px 100px 10px 0; */
+}
+.toubu_3{
+    width: 25%;
+    float: left;
+    height: 200px;
+    /* border: 1px solid red; */
+    /* margin: 10px 100px 10px 0; */
+}
+.toubu_4{
+    float: left;
+    width: 25%;
+    height: 200px;
+    /* border: 1px solid red; */
+    /* margin: 10px 150px 10px 0; */
+}
+.toubu_5{
+    width: 25%;
+    float: left;
+    height: 200px;
+}
+.toubu_6{
+    width: 25%;
+    float: left;
+    height: 200px;
+}
+/* span{
+    text-align: center;display:block;
+} */
+.zhongjian{
+    overflow: hidden;
+    padding-bottom: 75px;
+}
+.zhongjian h2{
+    font-size: 28px;
+    line-height: 35px;
+    text-align: center;
+}
+.zj_1,
+.zj_2,
+.zj_3{
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+.weibu{
+    overflow: hidden;
+    /* text-align: center; */
+    background-color: #f0f0f0;
+}
+.weibu h2{
+    font-size: 28px;
+    text-align: center;
+    line-height: 35px;
+}
+.wb_1,
+.wb_2,
+.wb_3{
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+

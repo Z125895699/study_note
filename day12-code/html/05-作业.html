@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 九九乘法表
+        // 需要用for嵌套，外层for写行，里层的for写列
+        var str = ''
+        for (var i = 1; i <= 9; i++) {
+            for (var j = 1; j <= i; j++) {
+                // 1 ✖️ 2 = 2
+                str += j + '✖️' + i + '=' + i * j + '\t'
+                // \t是 空格
+            }
+            str = str + '\n'
+            // \n 是换行
+        }
+        console.log(str)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

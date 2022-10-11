@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //  \w  字母数字下划线
+      //  \W   取反  除了字母数字下划线
+      let hd = 'hdvdsn2021_';
+      //match 是把它匹配出来 返回的是数组
+      console.log(hd.match(/\w+/));
+      let username = prompt('请输入用户名');
+      // test  是检测 返回的是布尔值
+      console.log(/^[a-z]\w{4,9}$/.test(username));
+    </script>
+  </body>
+</html>

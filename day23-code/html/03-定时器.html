@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>点击停止</button>
+    <script>
+        // setTimeout(调用函数，延时时间ms)定时器 时间不写默认为0
+        // 这个调用函数可以直接写函数  还可以写函数名
+        // 页面中可能有很多定时器，可以给定时器加标识符（名字）
+        setTimeout(function () {
+            console.log('时间到了')
+        }, 2000)
+        function callback() {
+            console.log('爆炸了')
+        }
+        setTimeout(callback, 3000)
+        let timer1 = setTimeout(callback, 3000)
+        let timer2 = setTimeout(callback, 4000)
+        //定时器的调用也叫回调函数
+        //清除定时器
+        let btn = document.querySelector('button')
+        let timer = setTimeout(function () {
+            console.log('爆炸了')
+        }, 5000)
+        btn.addEventListener('click', function () {
+            clearTimeout(timer)
+        })
+        /*********************************/
+        // setInterval 每隔多少时间就去调用这个回调函数 做倒计时
+        setInterval(function () {
+            console.log('继续输出')
+        }, 1000)
+    </script>
+</body>
+
+</html>

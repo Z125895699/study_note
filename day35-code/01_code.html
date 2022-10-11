@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let items = [1, 2, 3];
+      let items1 = items.map((item) => {
+        return item * 2;
+      });
+      console.log(items1);
+      function sum(num1, num2) {
+        return num1 + num2;
+      }
+      console.log(sum(10, 20));
+      console.log(sum.name);
+
+      function getResult(...args) {
+        console.log(args);
+        console.log(args.length);
+      }
+      getResult(1, 2, 3, 4, 5);
+
+      //arguments不会受默认值的影响 只与传入的参数有关
+      function getName(name = 'code') {
+        name = 'why';
+        console.log(arguments[0]);
+      }
+      getName();
+      getName('kobe');
+
+      let values = [1, 2, 3, 4];
+      function getSum() {
+        let sum = 0;
+        for (let i = 0; i < arguments.length; i++) {
+          sum += arguments[i];
+        }
+        return sum;
+      }
+
+      console.log(getSum.apply(null, values));
+      // 对可迭代对象应用扩展操作符，并将其作为一个参数传入，可以将可迭代对象拆分，并将迭代返回的每个值单独传入
+      console.log(getSum(...values));
+
+      let getSum1 = (...values) => {
+        return values.reduce((pre, cur) => {
+          return pre + cur;
+        }, 0);
+      };
+      console.log(getSum1(1, 2, 3));
+    </script>
+  </body>
+</html>

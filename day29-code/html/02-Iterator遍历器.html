@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      /*
+        原生具备Iterator接口的数据结构
+        Array
+        Map
+        Set
+        String
+        TypedArray
+        函数的 arguments 对象
+        NodeList 对象
+*/
+      //调用Iterator接口的场合
+      //1、解构赋值
+      //2、扩展运算符
+
+      let arr = ['a', 'b', 'c', 'd'];
+      // for (let i in arr) {
+      //   // console.log(i);
+      //   console.log(arr[i])
+      // }
+      for (let i of arr.entries()) {
+        console.log(i);
+      }
+    </script>
+  </body>
+</html>

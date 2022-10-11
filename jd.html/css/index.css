@@ -1,0 +1,158 @@
+a {
+    text-decoration: none;
+    color: #666;
+}
+body {
+    width: 100%;
+    max-width: 640px;
+    min-width: 320px;
+    margin: auto;
+    height: 2000px;
+    color: #666;
+    line-height: 1.5;
+    background-color: #ccc;
+}
+/* 固定定位要给一个100%宽度 */
+.header-search {
+    width: 100%;
+    height: 44px;
+    position: fixed;
+    overflow: hidden;
+    max-width: 640px;
+    min-width: 320px;
+
+}
+.search-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 44px;
+}
+.search-btn::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 18px;
+    background: url(../images/1.png) no-repeat;
+    background-size: 20px 18px;
+    margin: 14px 0 0 15px;
+}
+.search {
+    position: relative;
+    height: 30px;
+    margin: 10px 50px;
+    background-color: #fff;
+    border-radius: 15px;
+
+}
+.search .jd-icon {
+    position: absolute;
+    top: 6px;
+    left: 10px;
+    width: 20px;
+    height: 18px;
+    background:url(../images/logo.png) no-repeat;
+    background-size: 20px 18px;
+}
+.jd-icon::after{
+    position: absolute;
+    top: 0px;
+    right: -10px;
+    content: '';
+    display: block;
+    width: 1px;
+    height: 18px;
+    background-color: #ccc;
+}
+.sou {
+    position: absolute;
+    top: 8px;
+    left: 50px;
+    width: 18px;
+    height: 15px;
+    background: url(../images/jd-sprites.png) -81px 0;
+    background-size: 200px;
+}
+input {
+    position: absolute;
+    top: 6px;
+    left: 70px;
+    border:0;
+    font-size: 14px;
+    color: #666;
+}
+.search-login {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 44px;
+    color: #fff;
+    line-height: 44px;
+}
+.slider img {
+    width: 100%;
+}
+nav {
+    overflow: hidden;
+}
+nav a {
+    float: left;
+    width: 20%;
+    text-align: center;
+}
+nav a img {
+    width: 40px;
+    margin: 10px 0;
+}
+nav a span {
+    display: block;
+    font-size: 14px;
+}
+.seckill {
+    width: 100%;
+}
+.seckill_floor {
+    width: 355px;
+    height: 140px;
+    margin: 10px auto;
+}
+.title {
+    width: 100%;
+    height: 34px;
+}
+.title_left {
+    float: left;
+    width: 188px;
+    height: 34px;
+    background-color: pink;
+}
+.title_left .left {
+    float: left;
+    color: #333;
+}
+.title_left .center {
+    width: 45px;
+    height: 18px;
+    position: relative;
+    float: left;
+    color: red;
+}
+.title_left .center::after {
+    position: absolute;
+    top: 5px;
+    right: 6px;
+    content: '';
+    display: block;
+    width: 21px;
+    height: 18px;
+    background: url(../images/seckill-time-to_1de70c91.png) no-repeat;
+    background-size: 21px 18px;
+}
+.title_right {
+    float: right;
+    width: 70px;
+    height: 34px;
+    background-color: purple;
+}

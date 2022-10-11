@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 判断登录
+        let name = prompt('请输入用户名')
+        let password = prompt('请输入密码')
+        // 当输入的name和password不是admin和123456时，就会一直弹出让你输入
+        //while()里面的表达式为true时才会执行里面的语句
+        while (name !== 'admin' && password !== '123456') {
+            name = prompt('请输入用户名')
+            password = prompt('请输入密码')
+        }
+        alert('登录成功')
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box_1 {
+            width: 200px;
+            height: 200px;
+            background-color: brown;
+            /* 解决子元素加margin_top父元素向下移动的问题 */
+            /* 1、border: 1px solid red; */
+            /* 3、float: left; */
+        }
+
+        .box_1 div {
+            width: 100px;
+            height: 100px;
+            background-color: chartreuse;
+            margin-left: 50px;
+            margin-top: 50px;
+            /* 2、float: left; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box_1">
+        <div>
+
+        </div>
+    </div>
+</body>
+
+</html>

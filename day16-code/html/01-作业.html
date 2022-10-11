@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var computer = {
+            color: '红色',
+            weight: 197,
+            brand: '联想',
+            type: 800,
+            watch: function () {
+                console.log('看电影');
+            },
+            listen: function () {
+                console.log('听音乐');
+            },
+            play: function () {
+                console.log('打游戏');
+            },
+            code: function () {
+                console.log('敲代码');
+            }
+        }
+        computer.code();//调用方法不要输出，也不要忘记小括号
+        console.log(computer.brand);
+        console.log(computer.color);
+        //对象遍历用for(变量 in 对象名)
+        for (k in computer) {
+            console.log(k);//输出的是属性名
+            console.log(computer[k]);//输出的是属性值
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

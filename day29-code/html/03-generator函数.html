@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //generator函数
+      //解决异步编程的方案之一
+      //Generator函数是一个状态机 内部封装了不同状态的数据
+      //用来生成遍历器对象
+      //可暂停函数(惰性求值)  yield可暂停 next可启动  每次返回的是yield之后的表达式结果 默认undefined
+
+      function AsyncUtil() {
+        setTimeout(() => {
+          console.log('异步任务开始执行');
+          let data = '异步任务数据';
+          hd.next(data);
+        }, 2000);
+      }
+
+      function* generartorUtil() {
+        console.log('函数开始执行');
+        let bd = yield AsyncUtil(); //遇到yield就暂停   后面跟异步任务
+        console.log(`返回值:${bd}`);
+        console.log('函数继续执行');
+        yield AsyncUtil(); //遇到yield就暂停
+        console.log('函数结束执行');
+      }
+      let hd = generartorUtil();
+      // console.log(hd)
+      hd.next();
+    </script>
+  </body>
+</html>

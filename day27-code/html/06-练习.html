@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // let [x, y = 3, ...z] = ['a']
+        // console.log(x)
+        // console.log(y)
+        // console.log(z)
+
+        //***********//
+
+
+
+        //默认值为表达值
+        // function f() {
+        //     console.log('ss')
+        // }
+        // let [x = f()] = [undefined]
+        // console.log(x)
+
+
+        //*************//
+        //对象解构赋值
+        // let { foo, bar } = { foo: 1, bar: 2 }
+        // console.log(foo)
+        // console.log(bar)
+        //***********//
+        // let obj = { first: 'hello', last: 'hi' }
+        // let { first: f, last: g } = obj
+        // console.log(f)
+        // console.log(g)
+        //***********//
+        var x = 1
+        function foo(x, y = function () { x = 2 }) {
+            x = 3
+            y()
+            console.log(x)
+        }
+        foo()
+        console.log(x)
+    </script>
+</body>
+
+</html>

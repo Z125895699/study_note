@@ -1,0 +1,74 @@
+.jiewei{
+    background-color: #2a2a2a;
+    color: #fff;
+    overflow: hidden;
+}
+.jiewei .wrapper{
+    overflow: hidden;
+    width: 1200px;
+    /* background-color: green; */
+    margin: auto;
+}
+.jiewei_1{ 
+    height: 30px;
+    width: 500px;
+    margin: auto;
+}
+.jiewei_1>h2{
+    /* text-align: center; */
+    font-size: 20px;
+    font-weight: 900;
+    line-height:60px;
+}
+.jiewei_3{
+    float: left;
+    margin-right: 100px;
+}
+.jiewei_2{
+    margin-top: 30px;
+    color: white;
+    overflow: hidden;
+    float: left;
+    margin-right: 160px;
+    background:url(../img/index_img/line.png) no-repeat right top;
+}
+.jiewei_4{
+    width: 500px;
+    /* height: 500px; */
+    float: left;
+    /* border: red 1px solid; */
+    color: white;
+    margin-top: 30px;
+}
+.jiewei_4_1 h4{
+    font-size: 18px;
+    font-weight: 900;
+}
+.jiewei_4_1 span{
+    font-size: 11px;
+    font-family: "幼圆";
+}
+.jiewei_4_2{
+    margin-left: 190px;
+}
+.jiewei_4_2 img{
+    display: block;
+}
+.jiewei_4_2 span{
+    text-align: center;
+}
+.jiewei_6{
+    overflow: hidden;
+}
+.jiewei_5{
+    overflow: hidden;
+    border-top: 1px dotted gray;
+    margin-top: 50px;
+    line-height: 55px;
+}
+.jiewei_5 .span_1{
+    float: left;
+}
+.jiewei_5 .span_2{
+    float: right;
+}

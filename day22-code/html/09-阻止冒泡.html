@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .son {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        //获取事件源
+        let father = document.querySelector('.father')
+        let son = document.querySelector('.son')
+        //绑定事件  冒泡
+        son.addEventListener('click', function (e) {
+            alert('son')
+            //阻止冒泡
+            e.stopPropagation()
+        })
+        father.addEventListener('click', function (e) {
+            alert('father')
+            //阻止冒泡
+            e.stopPropagation()
+        })
+        document.addEventListener('click', function (e) {
+            alert('document')
+        })
+    </script>
+</body>
+
+</html>

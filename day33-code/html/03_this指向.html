@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      // //默认绑定  独立函数调用
+      // //普通函数调用
+      // function fn() {
+      //   console.log(this)
+      // }
+      // fn() //window
+      // //函数调用链
+      // function test1() {
+      //   console.log(this) //window
+      //   test2()
+      // }
+      // function test2() {
+      //   console.log(this) //window
+      //   test3()
+      // }
+      // function test3() {
+      //   console.log(this) //window
+      // }
+      // test1()
+
+      // //将函数传入另一个函数  只是一个函数的调用  并没有进行对象的绑定
+      // function fn(foo) {
+      //   foo()
+      // }
+      // function bar() {
+      //   console.log(this) //window
+      // }
+      // fn(bar)
+
+      // 只是一个独立函数的调用 没有进行对象的绑定
+      // function foo(fn) {
+      //   fn()
+      // }
+      // let obj = {
+      //   name: 'why',
+      //   bar() {
+      //     console.log(this) //window
+      //   },
+      // }
+      // foo(obj.bar)
+      // obj.bar() //obj
+
+      // //隐式绑定 也就是它的调用位置中，是通过某个对象发起的函数调用
+      // function foo() {
+      //   console.log(this)
+      // }
+      // let obj = {
+      //   name: 'kobe',
+      //   foo: foo,
+      // }
+      // obj.foo() //obj
+
+      //隐式丢失 最终的调用位置是bar  没有进行对象的绑定 造成隐式丢失
+      // function foo() {
+      //   console.log(this)
+      // }
+      // let obj = {
+      //   name: 'kobe',
+      //   foo: foo,
+      // }
+      // let bar = obj.foo
+      // bar() //window
+
+      //setTimeout
+      // setTimeout内部是通过apply进行绑定的this对象，并且绑定的是全局对象
+      // setTimeout(() => {
+      //   console.log(this) //window
+      // }, 1000)
+
+      //forEach 高阶函数
+      // let names = ['kobe', 'James', 'nab']
+      // names.forEach((item) => {
+      //   console.log(this) //window
+      // })
+      //绑定对象 此时不能使用箭头函数
+      // let names = ['kobe', 'James', 'nab']
+      // let obj = { name: 'kobe' }
+      // names.forEach(function (item) {
+      //   console.log(this) //obj
+      // }, obj)
+
+      // //
+      // let name = 'window'
+      // let person = {
+      //   name: 'person',
+      //   sayName: function () {
+      //     console.log(this.name)
+      //   },
+      // }
+      // function sayName() {
+      //   let sss = person.sayName
+      //   sss() //window
+      //   person.sayName()(
+      //     //person
+      //     person.sayName
+      //   )()(
+      //     //person  隐式调用
+      //     (b = person.sayName)
+      //   )() //window 隐式丢失
+      // }
+      // sayName()
+
+      // window.name = 'Byte'
+      // function A() {
+      //   this.name = 3
+      // }
+      // A.prototype.getA = function () {
+      //   console.log(this)
+      //   console.log(this.name + 1)
+      // }
+      // let c = new A()
+      // c.getA() //这个时候指向A
+      // let funcA = c.getA
+      // funcA() //这个时候指向window  发生隐式丢失
+
+      //bind绑定
+      function foo() {
+        console.log(this);
+      }
+      let obj = {
+        name: 'code',
+      };
+      function bind(func, obj) {
+        return function () {
+          return func.apply(obj, arguments);
+        };
+      }
+      let bar = bind(foo, obj);
+      // bind(foo,obj)
+      // 返回的是function () {
+      //     return func.apply(obj, arguments)
+      //   }
+      bar(); //obj对象
+
+      setTimeout(() => {
+        console.log(this);
+      }, 1000); //setTimeout内部是通过apply进行绑定的this对象，并且绑定的是全局对象
+
+      let arr = [1, 2, 3, 4];
+      let obj1 = {
+        name: 'code',
+      };
+      arr.forEach(function (item) {
+        console.log(this);
+      }, obj1); //forEach 里面的this 也是指向window 可以改变this的指向
+
+      let box = document.querySelector('.box');
+      box.addEventListener('click', function () {
+        console.log(this);
+      });
+
+      function foo3() {
+        console.log(this);
+      }
+      let obj3 = {
+        name: 'code',
+        foo3: foo3,
+      };
+      let obj4 = {
+        name: 'why',
+        foo3: foo3,
+      };
+      obj3.foo3();
+      obj4.foo3();
+
+      obj3.foo3.call(obj4); //显示绑定和隐式绑定同时存在 显示绑定优先级更高
+
+      function foo4() {
+        console.log(this);
+      }
+      let obj5 = {
+        name: 'code',
+        foo4: foo4,
+      };
+      new obj5.foo4(); //new的优先级更高
+    </script>
+  </body>
+</html>

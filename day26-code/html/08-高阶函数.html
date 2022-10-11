@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //高阶函数是对其他函数进行操作的函数    接受的参数可以是函数 或者将函数作为返回值输出
+      function fn(a, b, callback) {
+        console.log(a + b);
+        //如果回调函数有值 就执行
+        callback && callback();
+      }
+      fn(1, 2, function () {
+        console.log('最后一个');
+      });
+    </script>
+  </body>
+</html>

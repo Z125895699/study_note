@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //用forEach
+      arr = ['pink', 'green', 'red', 'blue'];
+      arr.forEach(function (value) {
+        if (value === 'green') {
+          return true; //在forEach 里面 return 不会终止迭代 会继续查找
+        }
+        console.log(11); //打印3次
+      });
+      //查找唯一元素 用some更合适
+      //用some
+      arr = ['pink', 'green', 'red', 'blue'];
+      arr.some(function (value) {
+        if (value === 'green') {
+          return true; //在some里遇到return true就终止遍历
+        }
+        console.log(11); //打印1次
+      });
+    </script>
+  </body>
+</html>

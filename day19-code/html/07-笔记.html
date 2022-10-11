@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 检测数组
+        // let arr = []
+        // let obj = {}
+        // console.log(arr instanceof Array)
+        // console.log(obj instanceof Array)
+        // console.log(Array.isArray)
+        //********************
+        // 添加数组
+        // let arr = [1, 9, 82, 3, 21]
+        //push返回的是新数组的数据长度 
+        // console.log(arr.push(1))
+        // console.log(arr)
+        // console.log(arr.unshift(2))
+        // console.log(arr)
+        // 删除数组的最后一个数据，返回的是删除的数据
+        // console.log(arr.pop())
+        // console.log(arr)
+        // 实现数组的翻转
+        // console.log(arr.reverse())
+        // 实现数组的排序,单纯的sort只能实现个位数的排序，当遇到两位数的排序则需要加a,b
+        // console.log(arr.sort(
+        //     function (a, b) {
+        //         return a - b //升序
+        //         return b - a//降序
+        //     }
+        // ))
+        // // 查找数组索引方法
+        // 1、如果有相同的元素，只返回第一个元素的索引
+        //2、如果没有该元素，则返回-1
+        // console.log(arr.indexOf(0))
+        //数组去重
+        // let arr = [1, 2, 1, 2, 4, 1]
+        // let unique = []
+        // for (i = 0; i < arr.length; i++) {
+        //     if (unique.indexOf(arr[i]) == -1) {
+        //         unique[unique.length] = arr[i]
+        //     }
+        // }
+        // console.log(unique)
+        // 数组转换为字符串
+        // let arr = [1, 2, 4, 3, 4]
+        // console.log(arr.toString())
+        // console.log(arr.join('$'))
+        // console.log(typeof (arr))
+        // 根据字符返回位置
+        // let str = 'oxosidbfhdjxpdj'
+        // console.log(str.indexOf('j', [11]))
+        // 求字符串中的字符出现的位置以及次数
+        // let str = 'oxosidbfodjopdj'
+        // let num = 0
+        // let index = str.indexOf('o')
+        // while (index !== -1) {
+        //     console.log(index)
+        //     num++
+        //     index = str.indexOf('o', [index + 1])
+        // }
+        // console.log(num)
+        // 求数组元素2出现的位置和次数
+        // let arr = [1, 2, 3, 4, 2, 1, 3, 25, 6]
+        // let num = 0
+        // let index = arr.indexOf(2)
+        // while (index !== -1) {
+        //     console.log(index)
+        //     num++
+        //     index = arr.indexOf(2, [index + 1])
+        // }
+        // console.log(num)
+        // 求字符串出现最多次数的字符，并统计次数
+        let str = 'abcoefoxyozzopp'
+        let o = {}
+        for (i = 0; i < str.length; i++) {
+            let chars = str.charAt(i)
+            if (o[chars]) {
+                o[chars]++
+            } else {
+                o[chars] = 1
+            }
+        }
+        console.log(o)
+        let max = 0
+        let ch = ''
+        for (k in o) {
+            if (o[k] > max) {
+                max = o[k]
+                ch = k
+            }
+        }
+        console.log(max)
+        console.log(ch)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

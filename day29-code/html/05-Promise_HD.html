@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../js/HD.js"></script>
+  </head>
+
+  <body>
+    <script>
+      let p = new HD((resolve, reject) => {
+        setTimeout(() => {
+          resolve('解决');
+          console.log('coder');
+          // reject('拒绝')
+        }, 1000);
+      })
+        //穿透传递
+        // .then()
+        .then(
+          (res) => {
+            console.log(res);
+            return new HD((resolve, rejected) => {
+              // resolve('张大叔');
+              rejected('张大叔是我');
+            });
+            // return '张大叔';
+          }
+          // (reason) => {
+          //   console.log(reason);
+          //   // return new HD((resolve,rejected)=>{
+          //   // // resolve('张大叔')
+          //   // rejected('张大叔是我')
+          //   // })
+          // }
+        )
+        // .catch((error) => {
+        //   console.log(error);
+        // });
+        .then(
+          (value) => {
+            console.log(value);
+          },
+          (reason) => {
+            console.log(reason);
+          }
+        );
+
+      //静态属性
+      // let P=new HD((resolve,reject)=>{
+      //   // resolve('成功')
+      //   reject('失败')
+      // })
+      // // HD.resolve(P).then(value=>{
+      // //   console.log(value);
+      // // })
+      // HD.reject(P).then(null,reason=>{
+      //   console.log(reason);
+      // })
+      console.log('i am coder');
+    </script>
+  </body>
+</html>

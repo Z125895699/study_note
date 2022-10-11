@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <span>sdhb</span>
+  <span>sdvjdvn</span>
+  <script>
+    toString
+    join
+    let hd = [1, 2, 3].join('|')
+    console.log(hd);
+    console.log(typeof (hd));
+    console.log(`${location.href}?id${hd}`);
+    let str = 'dbf'
+    console.log(str.split(','));
+    Array.from
+    console.log(Array.from(str));
+    let obj = {
+        0: 'sbs',
+        1: 'sdnb',
+        //对象加个length属性可以转换为字符串
+        length: 2
+    }
+    console.log(Array.from(obj));
+
+
+    ///Array.from   第二个参对其中每个元素进行设置
+    const spans = Array.from(document.querySelectorAll('span'), item => {
+      item.style.backgroundColor = 'green'
+      console.log(item.innerHTML);
+    })
+  </script>
+</body>
+
+</html>

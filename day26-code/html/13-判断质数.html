@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //判断质数   只能被1和自身整除的数叫质数
+        let num = parseInt(prompt('请输入一个数'))
+        function isPrame(num) {
+            //只需要判断输入数之前的数就行   因为后面的数肯定不能被整除
+            for (var i = 2; i < num; i++) {
+                if (num % i === 0) {
+                    break
+                }
+            }
+            if (i === num) {
+                alert(`${num}是质数`)
+            } else {
+                alert(`${num}不是质数`)
+            }
+
+        }
+        isPrame(num)
+    </script>
+</body>
+
+</html>

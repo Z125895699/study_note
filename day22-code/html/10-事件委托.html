@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <script>
+    //点击当前的li变颜色
+    //事件委托
+    //不是每个节点单独设置事件监听，而是事件监听设置在其父节点上，然后利用冒泡原理影响设置每个子节点
+    //获取事件源
+    let ul = document.querySelector('ul')
+    let lis = document.querySelectorAll('li')
+    //绑定事件   点击li 会经过冒泡原理传到ul ul有点击事件
+    ul.addEventListener('click', function (event) {
+      //event.target可以得到我们当前点击的对象
+      //event.target.style.backgroundColor = 'pink'
+      //排他思想
+      for (i = 0; i < lis.length; i++) {
+        //干掉其他人
+        lis[i].style.backgroundColor = ''
+      }
+      //留下当前点击的
+      event.target.style.backgroundColor = 'pink'
+    })
+  </script>
+
+</body>
+
+</html>

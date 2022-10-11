@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 1200px;
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <img src="../img/jd.jpg.webp" alt="">
+    </div>
+    <button class="btn">
+        点击
+    </button>
+    <script>
+        // 1、获取事件源
+        let btn = document.querySelector('.btn')
+        let div = document.querySelector('div')
+        // 2、注册事件 处理程序
+        btn.onclick = function () {
+            div.style.display = 'none'
+            this.style.display = 'none'
+        }
+    </script>
+</body>
+
+</html>

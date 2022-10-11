@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.div_1{
+    width: 1000px;
+    height: 100px;
+    background-color: gray;
+    margin: auto;
+}
+.div_2{
+    background-color: hotpink;
+}
+.div_3{
+    background-color:red;
+}
+.div_4{
+    background-color: yellow;
+}
+.div_5{
+    background-color: darkblue;
+}
+.div_2,
+.div_3,
+.div_4,
+.div_5{
+    width: 200px;
+    height: 100px;
+    float: left;
+    overflow: hidden;
+}
+.div_1 h2,
+p{
+    margin: 0 20px;
+}
+.div_1:hover div{
+    width: 20px;
+}
+.div_1 div:hover{
+    width: 300px;
+    overflow: auto;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //解决异步编程
+      //Promise对象  代表将来某个时间要发生的事件(通常是一个异步操作)
+      //Promise 是一个构造函数  用来生成promise实例
+      //Promise状态只能从准备改为成功或失败  不能从成功改为失败
+
+      //promise 对象的三个状态
+      //pending  : 初始化状态
+      //fulfilled :  成功状态
+      //rejected :   失败状态
+
+      //Promise构造函数接受一个函数作为参数
+      // 该函数的两个参数分别是resolve和reject
+      // 它们是两个函数，由 JavaScript 引擎提供，不用自己部署
+
+      let promise = new Promise((resolve, reject) => {
+        //1、初始化promise的状态为pending
+        // console.log(2)
+        //2、执行异步任务: 开启定时器      发送ajax 请求
+        //根据异步任务的执行结果来去修改promise对象的状态
+        setTimeout(() => {
+          //如果异步任务成功    修改promise对象的状态为成功状态  fullfilled
+          resolve('promise');
+          // reject(msg)
+          // console.log(promise);
+          //如果异步任务失败    修改promise对象的状态为失败状态  rejected
+        }, 2000);
+      });
+      console.log(promise);
+      promise.then(
+        (res) => {
+          //当promise对象的状态变为成功状态 fulfilled  会自动调用then方法的第一个回调
+          console.log(`${res}成功了`);
+        },
+        (res) => {
+          //当promise对象的状态变为 失败状态 rejected 会自动调用then方法的第二个回调
+          console.log(`${res}失败了`);
+        }
+      );
+
+      let num = 0;
+      function util() {
+        num++;
+        let promise = new Promise((resolve, reject) => {
+          //初始化
+          //执行异步任务
+          setTimeout(() => {
+            resolve(`第${num}个执行成功`);
+            // console.log(1)
+            // reject(`失败`)
+          }, 2000);
+        });
+        return promise;
+      }
+      util()
+        .then(
+          (reslut) => {
+            // throw new Error('fail')
+            console.log(reslut);
+            return 'code';
+            // if (reslut) {
+            //   return util()
+            // }
+          },
+          // 一般then 的第二个参数不写 用catch来写
+          (reason) => {
+            console.log(reason);
+            return `why`;
+          }
+        )
+        .then() //then的穿透
+        // 下面执行的前提是上面的返回为promise   第一个then 会随上面的promise影响
+        // 但是下面的then 不会随 开始的promise影响  随上一个then的影响  新promise默认成功
+        .then((reslut) => {
+          console.log(`这是${reslut}`);
+          // console.log('dg')
+        })
+        .catch((error) => {
+          console.log(`Error:${error}`);
+        });
+
+      const p1 = new Promise((reslve, reject) => {
+        setTimeout(() => {
+          reject(new Error('fail'));
+        }, 3000);
+      });
+      // console.log(p1)
+
+      const p2 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(p1);
+        }, 1000);
+      });
+      p2.then((result) => console.log(result)).catch((error) =>
+        console.log(error)
+      );
+
+      // Promise 会吃掉错误
+      const someAsyncThing = function () {
+        return new Promise(function (resolve, reject) {
+          // 下面一行会报错，因为x没有声明
+          resolve(x + 2);
+        });
+      };
+
+      someAsyncThing().then((result) => console.log(result));
+
+      setTimeout(() => {
+        console.log(123);
+      }, 2000);
+    </script>
+  </body>
+</html>

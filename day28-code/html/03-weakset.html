@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let jelly = { name: 'jelly', age: 18 }
+    let mary = { name: 'mary', age: 20 }
+    // const people = new WeakSet([jelly, mary])
+    // console.log(people)
+    //WeakSet里面的数据只能是对象
+    //WeakSet 不能遍历
+    //防止内存泄漏
+    // const people = [jelly, mary]
+    // console.log(people);
+    // mary = null
+    // console.log(people);
+    const weakPeople = new WeakSet([jelly, mary])
+    console.log((weakPeople))
+    mary = null
+    //mary  不存在了
+    console.log(weakPeople)
+  </script>
+</body>
+
+</html>

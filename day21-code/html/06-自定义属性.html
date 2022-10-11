@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="zd" index='2'></div>
+    <script>
+        //获取事件
+        let div = document.querySelector('div')
+        console.log(div.className)
+        console.log(div.getAttribute('index'))
+        //设置自定义属性
+        div.setAttribute('index', 3)
+        // 添加自定义属性
+        div.setAttribute('data-index', 6)
+        // 获取自定义属性
+        console.log(div.getAttribute('data-index'))
+        // dataset是以一个集合，里面存放了所有以data开头的自定义属性
+        console.log(div.dataset.index)
+    </script>
+</body>
+
+</html>

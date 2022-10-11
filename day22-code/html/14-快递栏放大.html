@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .search {
+            position: relative;
+            width: 178px;
+            margin: 100px;
+        }
+
+        .con {
+            display: none;
+            position: absolute;
+            top: -40px;
+            width: 171px;
+            border: 1px solid rgba(0, 0, 0, .2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+            padding: 5px 0;
+            font-size: 18px;
+            line-height: 20px;
+            color: #333;
+        }
+
+        .con::before {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 28px;
+            left: 18px;
+            border: 8px solid #000;
+            border-style: solid dashed dashed;
+            border-color: #fff transparent transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search">
+        <div class="con">123</div>
+        <input type="text" placeholder="请输入您的快递单号" class="jd">
+    </div>
+    <script>
+        //获取事件
+        let con = document.querySelector('.con')
+        let jd = document.querySelector('.jd')
+        //绑定事件 处理程序
+        jd.addEventListener('keyup', function (e) {
+            //得到键盘按下
+            // console.log('按下了')
+            //如果jd没有值,就不让con盒子显示
+            if (this.value === '') {
+                con.style.display = 'none'
+            } else {
+                // 让con的盒子显示出来
+                con.style.display = 'block'
+                // 把jd的值给con
+                con.innerHTML = this.value
+            }
+            //不能把这个程序处理放在里面
+            // jd.addEventListener('blur', function () {
+            //     console.log(123)
+            // })
+        })
+        jd.addEventListener('blur', function () {
+            //失去焦点
+            console.log(123)
+            con.style.display = 'none'
+        })
+        jd.addEventListener('focus', function () {
+            //失去焦点
+            console.log(456)
+            //判断输入框再次得到焦点时con盒子的状态
+            if (this.value === '') {
+                con.style.display = 'none'
+            } else {
+                con.style.display = 'block'
+            }
+        })
+    </script>
+</body>
+
+</html>

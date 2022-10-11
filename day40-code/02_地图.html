@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a
+      target="_blank"
+      href="http://api.map.baidu.com/geocoder?address=广元市中医医院&output=html&src=webapp.baidu.openAPIdemo"
+      >查看地图</a
+    >
+    <a
+      href="http://api.map.baidu.com/marker?location=105.837862,32.450804&title=广元市中医医院&content=广元市中医医院&output=html"
+      >百度地图</a
+    >
+
+    <a onclick="submit()">地图</a>
+  </body>
+
+  <script>
+    function submit() {
+      console.log(1);
+      window.location.href =
+        'http://api.map.baidu.com/marker?location=' +
+        105.837862 +
+        ',' +
+        32.450804 +
+        '&title=' +
+        '医院' +
+        '&content=' +
+        '医院' +
+        '&output=html';
+    }
+  </script>
+</html>

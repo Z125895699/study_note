@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //替换
+      let tel = '2021-32-32';
+      console.log(tel.replace(/\-/g, '\/'));
+
+      let hd = '(010)99999999 (020)8888888';
+      let reg = /\((\d{3,4})\)(\d{7,8})/g;
+
+      // $1 原子组的第一个()     $` 左边       $'' 右边    $&内容
+      console.log(hd.replace(reg, '$1-$2'));
+      let bd = '%后盾人=';
+      console.log(bd.replace(/后盾人/, '$`'));
+    </script>
+  </body>
+</html>

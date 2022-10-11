@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [
+        { name: 'code', age: 20 },
+        { name: 'kobe', age: 30 },
+        { name: 'James', age: 30 },
+      ];
+      // let arr1 = arr.reduce((arr2, cur) => {
+      //   if (arr2.includes(cur.name) === false) {
+      //     arr2.push(cur.name)
+      //   }
+      //   return arr2
+      // }, [])
+      // console.log(arr1)
+      function excludeRepeat(strs) {
+        let set = new Set();
+        for (let i = 0; i < strs.length; i++) {
+          if (strs.indexOf(strs[i]) !== strs.lastIndexOf(strs[i]))
+            set.add(strs[i]);
+        }
+        return Array.from(set);
+      }
+      console.log(excludeRepeat(arr));
+    </script>
+  </body>
+</html>

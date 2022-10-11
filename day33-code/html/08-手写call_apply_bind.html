@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //手写call
+      Function.prototype._call = function (tx, ...args) {
+        //1、将方法挂载到传入的tx中
+        //2、将挂载以后的方法调用
+        //3、将属性删除
+        tx.fn = this
+        tx.fn(...args)
+        delete tx.fn
+      }
+      function test(age) {
+        console.log(this.name + '' + age)
+      }
+      let obj = {
+        name: '张大叔',
+      }
+      test._call(obj, 20)
+
+      //手写apply
+      Function.prototype._apply = function (tx, args = []) {
+        //1、将方法挂载到传入的tx中
+        //2、将挂载以后的方法调用
+        //3、将属性删除
+        if (args && !Array.isArray(args) === true) {
+          throw '错误'
+        }
+        tx.fn = this
+        tx.fn(...args)
+        delete tx.fn
+      }
+      function show(...args) {
+        console.log(args)
+        console.log(this.name)
+      }
+      show._apply({ name: '张大叔' }, ['jdbfbf', 'dcjhc'])
+    </script>
+  </body>
+</html>

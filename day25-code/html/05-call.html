@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // call方法
+      function fn() {
+        console.log('zd');
+        console.log(this);
+      }
+
+      var o = {
+        name: 'andy',
+      };
+      // fn()
+      //call()  可以调用函数
+      // fn.call()
+      // call() 可以改变函数的this指向
+      fn.call(o); //这个时候this指向 o
+      fn.call(); //这个时候this指向 window
+      //**************//
+      function Person(name, age, sex) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        // this指向它的调用者
+        console.log(this);
+      }
+      function Student(name, age, sex, score) {
+        //第一个参数必须要写 this指向它的调用者
+        Person.call(this, name, age, sex);
+        this.score = score;
+      }
+      let sl = new Student('zd', 19, '男', 90);
+      console.log(sl);
+    </script>
+  </body>
+</html>

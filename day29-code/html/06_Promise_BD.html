@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>手写Promise</title>
+    <script src="../js/BD.js"></script>
+  </head>
+
+  <body></body>
+  <script>
+    let b = new BD((resolve, reject) => {
+      // setTimeout(() => {
+      resolve('解决')
+      // }, 1000);
+    })
+      .then((value) => {
+        console.log(value)
+        return '张大叔'
+        // return new BD((resolve, reject) => {
+        // resolve('张大叔')
+        // reject('我是张大叔')
+        // })
+      })
+      .then(
+        (value) => {
+          console.log(value)
+        },
+        (reason) => {
+          console.log(reason)
+        }
+      )
+  </script>
+</html>

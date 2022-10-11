@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    //Promise.resolve() 返回一个Promise
+    console.log(Promise.resolve('张迪'));
+    Promise.resolve('张迪').then((v) => {
+      console.log(v);
+    });
+
+    const p1 = new Promise((resolve, reject) => {
+      // resolve('第一个异步')
+      reject('失败');
+    }).catch((error) => {
+      console.log(error);
+    });
+    const p2 = new Promise((resolve, reject) => {
+      resolve('第二个异步');
+    });
+    Promise.all([p1, p2]).then((value) => {
+      console.log(value);
+    });
+  </script>
+</html>

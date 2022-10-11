@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Father(uname, age) {
+        this.uname = uname;
+        this.age = age;
+      }
+      Father.prototype.money = function () {
+        console.log(1000);
+      };
+      // Son.prototype = Father.prototype // 修改子函数原型对象会改变父原型对象  这样父原型对象就会有子函数原型对象的方法
+
+      //利用空函数继承
+      let F = function () {};
+      F.prototype = Father.prototype;
+      Son.prototype = new F();
+      Son.prototype.constructor = Son;
+      //如果利用对象的形式改了原型对象 不要忘记利用constructor属性改为原构造函数
+
+      //**********//  父的实例对象给了Son的原型对象
+      // Son.prototype = new Father()
+      // Son.prototype.constructor = Son
+      //*************//
+
+      function Son(uname, age) {
+        Father.call(this, uname, age);
+      }
+      //子构造函数的自己专门方法
+      Son.prototype.exam = function () {
+        console.log(100);
+      };
+      let son = new Son('刘德华', 18);
+      console.log(son);
+      //父构造函数的原型对象没有子构造函数的独有的方法
+      console.log(Father.prototype);
+      //Son.prototype.constructor 指向原构造函数
+      console.log(Son.prototype.constructor);
+      // Father.prototype.constructor指向Father
+      console.log(Father.prototype.constructor);
+      // son.constructor  指向Son
+      console.log(son.constructor);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .zd {
+            width: 100px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        .bb,
+        .zj {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="zd">
+        <div class="shopcar">
+            我的购物车
+        </div>
+        <div class="bb">
+            已买到的宝贝
+        </div>
+        <div class="zj">
+            足迹
+        </div>
+        <script>
+            // 1、获取事件源
+            let zd = document.querySelector('.zd')
+            let shopcar = document.querySelector('.shopcar')
+            let bb = document.querySelector('.bb')
+            let zj = document.querySelector('.zj')
+            // 2、注册事件 处理程序
+            zd.onfocus = function () {
+                // console.log('点击到了')
+                bb.style.display = 'block'
+            }
+
+        </script>
+    </div>
+</body>
+
+</html>

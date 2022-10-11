@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 100px;
+      }
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        display: grid;
+        place-content: center;
+      }
+      button {
+        position: relative;
+        font-size: 60px;
+        border: 0;
+        background-color: rgba(144, 41, 247, 0.515);
+        padding: 0.5em 1em;
+        color: #fff;
+        border-radius: 0.2em;
+        cursor: pointer;
+        overflow: hidden;
+      }
+      button::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #d573ff;
+        z-index: -1;
+        width: 0%;
+      }
+
+      button:hover::before {
+        width: 100%;
+        transition: width 2s;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <button>hover me</button>
+    </div>
+  </body>
+  <script>
+    let btn = document.querySelector('button');
+    console.log(btn);
+    btn.addEventListener('transitionend', () => {
+      // 具体逻辑
+      alert('触发了');
+    });
+  </script>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header-logo {
+            position: relative;
+            width: 55px;
+            height: 55px;
+            background-color: #ff6700;
+            margin: 0 auto;
+        }
+
+        .header-logo::before,
+        .header-logo::after {
+            position: absolute;
+            width: 55px;
+            height: 55px;
+            content: '';
+            transition: margin-left .2s;
+        }
+
+        .header-logo::before {
+            left: -55px;
+            background: url(../img/20210410174700853.png) no-repeat 50% 50%;
+        }
+
+        .header-logo::after {
+            background: url(../img/20210410174730821.png) no-repeat 50% 50%;
+        }
+
+        .header-logo:hover::after,
+        .header-logo:hover::before {
+            margin-left: 55px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="header-logo"></div>
+</body>
+
+</html>

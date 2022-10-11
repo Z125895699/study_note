@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let arr = ['sdb', 'hbdf'];
+      let hd = arr.map((value, index, arr) => {
+        // console.log(value)
+        value = `张大叔${value}`;
+        //返回值给新的数组  要有返回值 不然输出undefined
+        return value;
+      });
+      console.log(hd);
+      //原数组的value没有改变     字符串数值都是值类型
+      console.log(arr);
+
+      // let lessons = [
+      //   { title: '媒体查询', category: 'css' },
+      //   { title: '媒体查询', category: 'css' },
+      //   { title: '媒体查询', category: 'css' },
+      // ]
+      // // 赋值的是内存地址   内存地址都是一样   改变值老数组的值也会改变
+      // let hd = lessons.map(value => {
+      //   value.click = 100
+      //   //要有返回值新数组才有值
+      //   return value
+      // })
+      // console.table(hd)
+      // console.table(lessons)
+    </script>
+  </body>
+</html>

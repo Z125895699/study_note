@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //通过构造函数 生成对象
+      function Star(uname, age) {
+        this.uname = uname;
+        this.age = age;
+        this.sing = function () {
+          console.log('song');
+        };
+      }
+      let ldh = new Star('刘德华', 18);
+      //调用方法
+      ldh.sing();
+      //实例成员 就是构造函数内部通过this添加的成员
+      //实例成员只能通过实例化的对象访问  不可以通过构造函数来访问实例成员
+      console.log(ldh.age);
+      console.log(Star.uname);
+      // 静态成员 在构造函数身上添加的成员
+      Star.sex = '男';
+      //静态成员只能通过构造函数来访问 不能通过对象来访问
+      console.log(Star.sex);
+    </script>
+  </body>
+</html>

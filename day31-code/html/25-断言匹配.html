@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <main>
+      <a href="https://yahoo.com">雅虎</a>
+      <input type="text" name="username" id="" />
+      <span></span>
+    </main>
+  </body>
+  <script>
+    // ?= 后面是什么
+    // ？<=前面是什么
+    let user = `
+  电话:12345678910
+
+  `;
+    let reg = /(?<=\d{7})\d{4}/;
+    user = user.replace(reg, (v) => {
+      console.log(v);
+      return '*'.repeat(4);
+    });
+    console.log(user);
+
+    // let hd = 'shdbsjkkd1233ebf'
+    // let reg = /[a-z]+(?!\d+)/i
+    // //不取d  因为d后面是数字
+    // console.log(hd.match(reg));
+
+    //.* 0个或多个
+
+    let input = document.querySelector('[name="username"]');
+    let span = document.querySelector('span');
+    input.addEventListener('keyup', function () {
+      let reg = /^(?!.*张迪 .*)[a-z]{5,6}$/i;
+      reg.test(this.value)
+        ? (span.innerHTML = '正确')
+        : (span.innerHTML = '错误');
+      console.log(this.value.match(reg));
+    });
+  </script>
+</html>

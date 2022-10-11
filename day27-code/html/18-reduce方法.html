@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //reduce 包括三种运算 遍历   变形   累计
+      let arr = [1, 2, 3];
+
+      const handler = function (pre, cur) {
+        pre.push(cur + 1);
+        return pre;
+      };
+      console.log(arr.reduce(handler, []));
+
+      let arr2 = arr.reduce((pre, cur) => {
+        pre.push(cur + 1);
+        return pre;
+      }, []);
+      console.log(arr2);
+
+      let arr1 = arr.map((item) => item + 1);
+      console.log(arr1);
+
+      // let arr = [1, 2, 3, 4, 5]
+      // //第一个是返回值 第一次是1
+      // arr.reduce(function (pre, value, index, array) {
+      //   console.log(pre, value);
+      //   return 99
+      // })
+      //第一个是返回值 第一次是初始值0
+      //第二个参数是初始值
+      // arr.reduce((pre, value, index, array)=> {
+      //   console.warn(pre, value);
+      //   return 99
+      // }, 0)
+
+      //累加器
+      // let arr = [1, 2, 3, 4, 5]
+      // let Sum = arr.reduce((pre, value, index, array) => {
+      //   let sum = pre + value
+      //   return sum
+      // })
+      // console.log(Sum)
+
+      //求最大值
+      let cart = [
+        { name: 'iphone', price: 12444 },
+        { name: 'imac', price: 22444 },
+        { name: 'ipad', price: 2444 },
+        { name: 'ipad', price: 2444 },
+        { name: 'imac', price: 22444 },
+      ];
+      // function maxPrice(goods) {
+      //   return goods.reduce((pre, cur) => {
+      //     return pre.price > cur.price ? pre : cur
+      //   })
+      // }
+      // console.log(maxPrice(cart))
+
+      //求总价格
+      function sum(goods) {
+        return goods.reduce((total, cul) => {
+          return (total += cul.price);
+        }, 0);
+      }
+      console.log(sum(cart));
+
+      // 获取价格超过一万元的名称 filter方法
+      function getNameByPrice(goods) {
+        const i = goods.filter((value) => {
+          return value.price > 10000;
+        });
+        return i;
+      }
+      console.table(getNameByPrice(cart));
+
+      //reduce方法
+      function getNameByPrice(goods) {
+        return goods
+          .reduce((pre, cur) => {
+            //超过一万元把他压进数组
+            if (cur.price > 10000) {
+              pre.push(cur);
+            }
+            return pre;
+          }, [])
+          .map(
+            (item) => item.name
+            //只要商品的nameitem.name
+          );
+      }
+      console.table(getNameByPrice(cart));
+
+      // let arr = [1, 2, 2, 1, 3, 6]
+      // let arr1 = arr.reduce((arr2, cur) => {
+      //   // arr里面找cur
+      //   if (arr2.includes(cur) === false) { arr2.push(cur) }
+      //   return arr2
+      // }, [])
+      // console.log(arr1)
+
+      // function filterGoods(goods) {
+      //   return goods.reduce((arr1, cur) => {
+      //     let find = arr1.find((v) => {
+      //       return v.name === cur.name
+      //     })
+      //     if (!find) arr1.push(cur)
+      //     return arr1
+      //   }, [])
+      // }
+      // console.table(filterGoods(cart))
+    </script>
+  </body>
+</html>

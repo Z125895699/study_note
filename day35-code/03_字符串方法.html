@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //split() 方法使用指定的分隔符字符串将一个String对象分割成子字符串数组，以一个指定的分割字串来决定每个拆分的位置
+      let str = 'code kobe James this is';
+      //无参数 整个字符串作为数组的一个元素
+      let words = str.split();
+      console.log(words); //["code kobe James this is"]
+      console.log(words.length); //1
+      //根据空字符串分隔数组
+      let words1 = str.split('');
+      console.log(words1); //["c", "o", "d", "e", " ", "k", "o", "b", "e", " ", "J", "a", "m", "e", "s", " ", "t", "h", "i", "s", " ", "i", "s"]
+      console.log(words1.length); //23
+      //根据空格分隔数组
+      let words2 = str.split(' ');
+      console.log(words2); //["code", "kobe", "James", "this", "is"]
+      console.log(words2.length); //5
+      //根据逗号分隔数组
+      let words3 = str.split(',');
+      console.log(words3); //["code kobe James this is"]
+      console.log(words3.length); //1
+      //根据空格分隔数组 显示数组长度
+      let words4 = str.split(' ', 3);
+      console.log(words4); //["code", "kobe", "James"]
+      console.log(words4.length); //3
+      //根据正则匹配
+      let words5 = str.split(/ /s);
+      console.log(words5); //["code", "kobe", "James", "this", "is"]
+      console.log(words5.length);//5
+    </script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // function cook() {
+
+        // }
+        // cook();
+        // console.log(cook());
+        // // 如果没有返回值，则返回undefined
+        // function showargs() {
+        //     console.log(arguments);
+        // }
+        // showargs(1, 2, 3, 4, 5);
+        // function add() {
+        //     if (arguments.length == 2) {
+        //         return arguments[0] + arguments[1];
+        //     } else {
+        //         return '传入参数不正确';
+        //     }
+        // }
+        // console.log(add(1, 2));
+        // console.log(add(1, 2, 3));
+        // arguments 求最大值
+        // function getMax() {
+        //     var max = arguments[0];
+        //     for (var i = 1; i < arguments.length; i++) {
+        //         if (arguments[i] > max) {
+        //             max = arguments[i];
+        //         }
+        //     }
+        //     return max;
+        // }
+        // var num1 = parseFloat(prompt('请输入第一个数'));
+        // var num2 = parseFloat(prompt('请输入第二个数'));
+        // var num3 = parseFloat(prompt('请输入第三个数'));
+        // getMax(num1, num2, num3);
+        // alert弹出的是数字不用加双引号
+        // alert(getMax(num1, num2, num3));
+        // 数组的翻转
+        // function reverse(arr) {
+        //     var newArr = [];
+        //     for (var i = arr.length - 1; i >= 0; i--) {
+        //         newArr[newArr.length] = arr[i];
+        //     }
+        //     return newArr;
+        // }
+        // // 必须要把实参写，这样才有实参传给形参
+        // reverse([1, 2, 7, 8]);
+        // console.log(reverse([1, 2, 7, 8]));
+        // 判断闰年还是平年
+        // function panduan(num) {
+        //     if (num % 4 == 0 && num % 100 != 0 || num % 400 == 0) {
+        //         return '您输入的是闰年';
+        //     } else {
+        //         return '您输入的是平年';
+        //     }
+
+        // }
+        // var num = parseInt(prompt('请输入年份'));
+        // panduan(num);
+        // alert(panduan(num));
+        // 函数实现冒泡排序
+        // function sort(arr) {
+        //     for (i = 0; i < arr.length - 1; i++) {
+        //         for (var j = 0; j < arr.length - i - 1; j++) {
+        //             if (arr[j] > arr[j + 1]) {
+        //                 var temp = arr[j];
+        //                 arr[j] = arr[j + 1];
+        //                 arr[j + 1] = temp;
+        //             }
+        //         }
+        //     }
+        //     return arr;
+
+        // }
+        // sort([5, 4, 3, 2, 1]);
+        // console.log(sort([5, 4, 3, 2, 1]));
+        // function hello(user) {
+        //     return 'hello' + '\t' + user;
+        // }
+        // var user = 'world';
+        // hello(user);
+        // document.write(hello(user));
+        // function show() {
+        //     var a = 5, b = 6, c = 7;
+        // }
+        // show();
+        // alert(a);
+        //  会报错 因为a,b,c都是局部变量
+        // var a = 1;
+        // var b = 2;
+        // function f() {
+        //     var a = 3;
+        //     var b = 4;
+        // }
+        // f();
+        // console.log(a);
+        // console.log(b);
+        // 放在下面会先输出1，2
+        var i = 0;
+        while (1) {
+            if (i > 50) {
+                break;
+            }
+            i++;
+            console.log(i);
+        }
+        // let作用块级作用域。输出6
+        var a = [];
+        for (let i = 0; i < 10; i++) {
+            a[i] = function () {
+                console.log(i);
+            }
+        }
+        a[6]();
+
+        var a = [];
+        for (var i = 0; i < 10; i++) {
+            console.log(i);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

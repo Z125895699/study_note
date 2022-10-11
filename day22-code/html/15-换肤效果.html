@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: url(../img/WechatIMG128.jpeg) no-repeat;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul {
+            width: 300px;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+
+        ul li {
+            float: left;
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li> <img src="../img/WechatIMG128.jpeg" alt="">
+        </li>
+        <li>
+            <img src="../img/WechatIMG129.jpeg" alt="">
+        </li>
+        <li>
+            <img src="../img/WechatIMG130.jpeg" alt="">
+        </li>
+        <script>
+            //获取事件源
+            let imgs = document.querySelector('ul').querySelectorAll('img')
+            // 获取三张照片
+            // console.log(imgs)
+            for (let i = 0; i < imgs.length; i++) {
+                imgs[i].addEventListener('click', function () {
+                    // document.body.style.backgroundImage = 'url(' + this.src + ')'
+                    //模版字符串``
+                    document.body.style.backgroundImage = `url(${this.src})`
+
+                })
+            }
+        </script>
+    </ul>
+</body>
+
+</html>

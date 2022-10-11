@@ -1,0 +1,143 @@
+
+.main {
+    margin-left: 220px;
+    height: 440px;
+    width: 980px;
+    margin-top: 10px;
+}
+.focus {
+    float: left;
+    height: 440px;
+    width: 720px;
+    background-color: skyblue;
+}
+.focus img {
+    width: 720px;
+    height: 440px;
+}
+.newsflash {
+    margin-left: 10px;
+    float: left;
+    width: 250px;
+    height: 440px;
+}
+.newsflash .kuaibao {
+    width: 250px;
+    height: 165px;
+    border: 1px solid #f3f3f3;
+}
+.newsflash .kuaibao .more {
+    width: 250px;
+    height: 32px;
+    border-bottom: 1px dashed #f3f3f3;
+    line-height: 32px;
+
+}
+.newsflash .kuaibao .more h5 {
+    margin-left: 15px;
+    font-size: 14px;
+    float: left;
+}
+.newsflash .kuaibao .more a {
+    font-size: 14px;
+    margin-right: 28px;
+    float: right;
+}
+.newsflash .kuaibao .th {
+    width: 250px;
+    height: 133px;
+}
+.newsflash .kuaibao .th ul {
+    margin-top: 10px;
+}
+.newsflash .kuaibao .th li {
+    height: 24px;
+    line-height: 24px;
+    margin-left: 16px;
+}
+.newsflash .liebiao {
+    width: 250px;
+    height: 209px;
+    border: 1px solid #f3f3f3;
+    border-top: 0;
+    overflow: hidden;
+}
+.newsflash .liebiao  ul {
+    width: 252px;
+    height: 209px;
+}
+.newsflash .liebiao li {
+    float: left;
+    width: 63px;
+    height: 71px;
+    border: 1px solid #f3f3f3;
+    border-top: 0;
+    border-left: 0;
+    text-align: center;
+    padding-top: 14px;
+}
+.newsflash .liebiao li:nth-child(2) {
+    position: relative;
+}
+.newsflash .liebiao .mj {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.newsflash .liebiao li i {
+    display: inline-block;
+    width: 24px;
+    height: 28px;
+    background-color: pink;
+    background: url(../images/icons的副本.png) no-repeat -19px -15px;
+}
+.newsflash .bargin {
+    margin-top: 10px;
+    width: 250px;
+    height: 56px;
+    /* background-color: red; */
+    background: url(../images/图层178.png) no-repeat;
+}
+.recommend {
+    height: 163px;
+    margin-top: 11px;
+}
+.recommend .recom_hd {
+    float: left;
+    width: 204px;
+    height: 163px;
+    background-color: #5c5251;
+    text-align: center;
+    line-height: 163px;
+}
+.recommend .recom_bd {
+    float: left;
+    width: 996px;
+    height: 163px;
+    background-color: #ebebeb;
+}
+.recommend .recom_bd {
+    width: 996px;
+    height: 163px;
+}
+.recommend .recom_bd li {
+    position: relative;
+    float: left;
+    width: 249px;
+    height: 162px;
+    background-color: pink;
+}
+.recommend .recom_bd li img {
+    width: 249px;
+    height: 162px;
+}
+.recommend .recom_bd li:nth-child(-n+3):after {
+    position: absolute;
+    right: 0;
+    top: 10px;
+    content: '';
+    width: 2px;
+    height: 145px;
+    background-color: #e6e6e6;
+}
+

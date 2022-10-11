@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 猜数字游戏 返回一个随机数字
+        function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min
+        }
+        getRandom(1, 50)
+        // 猜1到10之内的数，但是只有三次机会
+        console.log(getRandom(1, 50))
+        // 用for来循环次数
+        for (let i = 1; i <= 3; i++) {
+            //这里用户输入的num不能放在for循环外面 如果放在外面会一直循环一种情况然后结束次数
+            let num = parseInt(prompt('请输入一个数'))
+            if (num > getRandom(1, 50)) {
+                alert('你猜大了')
+            }
+            else if (num < getRandom(1, 50)) {
+                alert('你猜小了')
+            }
+            else {
+                alert('你猜对了')
+                break;//结束循环 
+            }
+            if (i == 3) {
+                alert('抱歉次数用完了')
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

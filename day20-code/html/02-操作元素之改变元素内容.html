@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <button>显示当前时间</button>
+    <div>某个时间</div>
+    <script>
+        // 1、获取事件源
+        let btn = document.querySelector('button')
+        let div = document.querySelector('div')
+        // 2、注册事件
+        btn.onclick = function () {
+            div.innerText = '2021 - 07 - 13'
+        }
+    </script> -->
+    <button id="mm">猫猫</button>
+    <button id=gg>狗狗</button>
+    <br>
+    <img src="../img/猫猫.webp" alt="" title="maomao">
+    <script>
+        // < !--1、获取事件源-- >
+        let mm = document.getElementById('mm')
+        let gg = document.getElementById('gg')
+        let img = document.querySelector('img')
+        // 2、注册事件  添加事件处理程序 
+        gg.onclick = function () {
+            img.src = '../img/gougou.webp';
+        }
+        mm.onclick = function () {
+            img.src = '../img/猫猫.webp'
+        }
+    </script>
+</body>
+
+</html>

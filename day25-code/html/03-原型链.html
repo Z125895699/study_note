@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      function Star(uname, age) {
+        this.uname = uname;
+        this.age = age;
+      }
+      Star.prototype = {
+        constructor: Star,
+        sex: '女',
+        sing: function () {
+          console.log('song');
+        },
+      };
+      let ldh = new Star('刘德华', 18);
+      // ldh.sex = '男'
+      console.log(ldh.sex);
+      //String() 方法在Object身上的
+      console.log(ldh.toString());
+    </script>
+  </body>
+</html>

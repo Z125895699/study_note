@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 1、
+        console.log(num);
+        // 2、
+        console.log(num);
+        var num = 10;
+        // 相当于执行了一下代码
+        var num;
+        console.log(num);
+        num = 10
+
+        /////********************////
+
+        // 3、函数会有一个提升，所以把fn()放在最上面不会报错
+        fn();
+        function fn() {//函数声明
+            console.log(11);
+        }
+        // 相当于执行了以下代码
+        function fn() {
+            console.log(11);
+        }
+        fn();
+
+
+
+
+        // 4、fun();放在上面会报错
+        fun();
+        var fun = function () {     //函数表达式 fun不是函数名
+            console.log(22);
+        }
+        // 相当于执行了以下代码
+        var fun;
+        fun();
+        fun = function () {
+            console.log(22);
+        }
+
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

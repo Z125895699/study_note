@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <script>
+        //1、获取事件源
+        let divs = document.querySelectorAll('div')
+        //传统绑定事件
+        divs[0].onclick = function () {
+            alert(11)
+            //解绑事件
+            divs[0].onclick = null
+        }
+        //监听绑定事件
+        divs[1].addEventListener('click', fn) //直接把函数放里面 不调用
+        //不写成匿名函数，函数写外面
+        function fn() {
+            alert(22)
+            // 解绑事件
+            divs[1].removeEventListener('click', fn)
+        }
+    </script>
+</body>
+
+</html>

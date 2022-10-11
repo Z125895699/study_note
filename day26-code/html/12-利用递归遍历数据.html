@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let data = [
+        {
+          id: 1,
+          name: '家电',
+          goods: [
+            {
+              id: 11,
+              gname: '冰箱',
+            },
+            {
+              id: 12,
+              gname: '洗衣机',
+            },
+          ],
+        },
+        {
+          id: 2,
+          name: '服饰',
+        },
+      ];
+      //利用forEach遍历每个对象
+      function getID(json, id) {
+        json.forEach(function (item) {
+          // console.log(item)   2个数组元素
+          if (item.id === id) {
+            // console.log(item)
+            //把数据给o
+            o = item;
+            // 要得到里面的数据 可以利用递归函数
+            // 里面应该有goods这个数组并且数组长度不为0
+          } else if (item.goods && item.goods.length > 0) {
+            //遍历的是goods数组  递归
+            //把递归后的值给o
+            o = getID(item.goods, id);
+          }
+        });
+        return o;
+      }
+      console.log(getID(data, 1));
+      console.log(getID(data, 11));
+      console.log(getID(data, 12));
+    </script>
+  </body>
+</html>

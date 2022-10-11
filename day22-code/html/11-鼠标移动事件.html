@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= b, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 图片使用绝对定位 */
+        img {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="../img/gougou.webp" alt="">
+    <script>
+        //获取事件源
+        let pic = document.querySelector('img')
+        document.addEventListener('mousemove', function (e) {
+            //mousemove只要我们鼠标移动1px，就会触发这个事件
+            // console.log(1)
+            //e.pageX 和e.pageY 是相对页面的坐标
+            let x = e.pageX
+            let y = e.pageY
+            console.log(x, y)
+            // pic.style.left = x - 50 + 'px'
+            //模版字符串
+            pic.style.left = `${x - 50}px`
+            // pic.style.top = y - 50 + 'px'
+            pic.style.top = `${y - 50}px`
+        })
+    </script>
+</body>
+
+</html>

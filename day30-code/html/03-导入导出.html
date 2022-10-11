@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+  <script type="module">
+    //批量导出
+    // import * as api from "../js/01.js";
+    // console.log(api);
+    // console.log(api.site);
+    // console.log(api.User.render());
+
+    //推荐使用这种
+    import { site, User } from '../js/01.js';
+    console.log(site);
+    console.log(User.render());
+  </script>
+</html>

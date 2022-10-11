@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function Cat(name, color) {
+      this.name = name;
+      this.color = color;
+    }
+    Cat.prototype = {
+      type: '猫科动物',
+      eat: function () {
+        alert('吃老鼠');
+      },
+    };
+    // let cat1=new Cat("大毛","黄色")
+    // let cat2= new Cat("二毛","黑色")
+    // console.log(cat1.type);
+    // //cat1和cat2会自动含有一个constructor属性  指向构造函数
+    // console.log(cat1.constructor===Cat);
+    // console.log(cat1 instanceof Cat);
+    // console.log(Cat.prototype.isPrototypeOf(cat1));
+
+    function Animal() {
+      this.species = '动物';
+    }
+    function Cat(name, color) {
+      Animal.call(this, arguments);
+      this.name = name;
+      this.color = color;
+    }
+    // let cat1=new Cat('大黄','红色')
+    // console.log(cat1.name);
+    // console.log(cat1.species);
+    Cat.prototype = new Animal();
+    Cat.prototype.constructor = Cat; //将Cat.prototype上的constructor属性指向Cat
+    let cat1 = new Cat('大黄', '红色');
+    console.log(cat1.species);
+    console.log(Cat.prototype.constructor === Cat);
+    console.log(cat1.constructor === Cat);
+    console.log(cat1.__proto__ === Cat.prototype);
+    console.log(Cat.prototype.__proto__);
+  </script>
+</html>

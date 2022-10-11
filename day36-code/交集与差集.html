@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // let nums = [1, 2, 3, 4, 5, 6];
+      // let result = nums
+      //   .filter((item) => item % 2 === 0)
+      //   .map((item) => item * 10)
+      //   .reduce((pre, cur) => pre + cur);
+      // console.log(result); //120
+
+      //取出重复项 后一项是否与前一项相同
+      // let arr = [1, 2, 3, 4, 5, 6, 1, 2, 3];
+      // let result1 = arr.sort();
+      // console.log(result1);
+      // let arr2 = [];
+      // for (let i = 0; i < arr.length; i++) {
+      //   if (arr[i] === arr[i + 1]) {
+      //     arr2.push(arr[i]);
+      //   }
+      // }
+      // console.log(arr2);
+
+      //取出两个数组的交集  用Set
+      let arr1 = [1, 2, 3];
+      let arr2 = [1, 2, 3, 4, 5, 6];
+
+      // let arr3 = [...arr1, ...arr2];
+      // console.log(arr3);
+      // let result1 = arr3.sort();
+      // console.log(result1);
+      // let arr4 = [];
+      // for (let i = 0; i < arr3.length; i++) {
+      //   if (arr3[i] === arr3[i + 1]) {
+      //     arr4.push(arr3[i]);
+      //   }
+      // }
+      // console.log(arr4);
+
+      let a = new Set(arr1);
+      let b = new Set(arr2);
+
+      //求差集
+      console.log(
+        Array.from(new Set([...a, ...b].filter((x) => !a.has(x) || !b.has(x))))
+      );
+
+      //交集
+      console.log(
+        Array.from(new Set([...a, ...b].filter((x) => a.has(x) && b.has(x))))
+      );
+
+      // let obj = {
+      //   name: 'coder',
+      //   age=20
+      // };
+      // let {name,age}=obj
+    </script>
+  </body>
+</html>

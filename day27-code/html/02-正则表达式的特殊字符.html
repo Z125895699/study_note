@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let rg = /123/
+        // /123/只要包含里面有123   就返回true
+        console.log(rg.test(123))
+        console.log(rg.test(12345))
+        console.log(rg.test(123456))
+        let rg = /^123/
+        console.log(rg.test(123))
+        console.log(rg.test(12345))
+        console.log(rg.test(23456))
+        let rg1 = /^123$/ //精确匹配 必须是123才行 
+        console.log(rg1.test(123))
+        console.log(rg1.test(12345))
+        console.log(rg1.test(23456))
+    </script>
+</body>
+
+</html>

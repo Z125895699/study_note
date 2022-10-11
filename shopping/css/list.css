@@ -1,0 +1,113 @@
+ .miaosha {
+     height: 32px;
+     line-height: 32px;
+     position: absolute;
+     left: 185px;
+     top: 40px;
+     border-left: 1px solid #ca1f2c;
+     padding-left: 15px;
+}
+.nav .w {
+    height: 46px ;
+}
+.nav_hd {
+    height: 46px;
+    line-height: 46px;
+    overflow: hidden;
+    float: left;
+}
+.nav_hd  ul {
+    padding: 0 30px;
+}
+.nav_hd li {
+    float: left;
+    margin-right: 60px;
+}
+.nav_hd a {
+     font-size: 16px;
+     font-weight: 900;
+     color: #000;
+}
+.nav_bd {
+    float: left;
+    height: 46px;
+}
+.nav_bd ul {
+    height: 46px;
+    line-height: 46px;
+}
+.nav_bd li {
+    float: left;
+}
+.nav_bd li a {
+    font-size: 14px;
+    margin-right: 36px;
+}
+.list_bd {
+    overflow: hidden;
+}
+.list_bd ul {
+    overflow: hidden;
+}
+.list_bd li {
+    float: left;
+    width: 25%;
+    height: 459px;
+    border: 1px solid transparent;
+    background-color: #fff;
+}
+.list_bd li:hover{
+    border-top: 1px solid #e92331;
+    border-right: 1px solid #e92331;
+
+}
+.list_bd li p {
+    font-size: 14px;
+    margin:0 0 14px 14px;
+}
+.list_bd li i {
+    font-size: 14px;
+    color: #e92331;
+    font-weight: 900;
+    margin:0 5px 0 14px;
+    
+}
+.ys {
+    width: 260px;
+    height: 15px;
+    line-height: 15px;
+    margin-top: 14px;
+    margin-bottom: 12px;
+}
+/* .ys .lf {
+    margin-left: 14px;
+} */
+.ys span {
+    float: left;
+    font-size: 14px;
+}
+.bar {
+    float: left;
+    width: 132px;
+    height: 12px;
+    border: 1px solid #e92331;
+    border-radius: 6px;
+    margin: 0 5px;
+}
+.bar .bar_in {
+    width: 70%;
+    height: 100%;
+    background-color:#e92331 ;
+    border-radius: 6px;
+}
+.btn {
+    height: 50px;
+    background-color: #b1191a;
+    text-align: center;
+}
+.btn  input {
+    font-size: 20px;
+    background-color: #b1191a;
+    color: #fff;
+    margin: 15px;
+}

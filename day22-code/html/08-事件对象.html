@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .hd {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+
+    .bd {
+      width: 50px;
+      height: 50px;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hd">
+    <div class="bd">
+      123
+    </div>
+  </div>
+  <script>
+    //获取事件源
+    let div = document.querySelector('.bd')
+    //绑定事件
+    div.addEventListener('click', function (event) {
+      //事件对象event 只有事件存在才会存在
+      //事件对象events当形参看待
+      console.log(event);
+      //event.target 事件触发的对象   this 返回的绑定事件的对象
+      console.log(event.target)  //event.target 事件触发的对象
+      console.log(this)  // this 返回的绑定事件的对象
+      console.log(event.type)  //event.type 事件触发的类型
+      // event.preventDefault //阻止默认行为
+    })
+  </script>
+</body>
+
+</html>

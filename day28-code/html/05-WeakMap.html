@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //键值对的方式添加  只能用对象作为键
+      const key1 = { id: 1 }
+      const key2 = { id: 2 }
+      const key3 = { id: 3 }
+      const wm = new WeakMap([
+        [key1, '1'],
+        [key2, '2'],
+        [key3, '3'],
+      ])
+      console.log(wm.get(key1))
+      // const wm1 = new WeakMap()
+      // const key1 = { id: 1 },
+      //   key2 = { id: 2 }
+
+      // wm1.set(key1, 'Matt').set(key2, 'Frisbie')
+      // console.log(wm1.has(key1))
+      // console.log(wm1.get(key1))
+    </script>
+  </body>
+</html>

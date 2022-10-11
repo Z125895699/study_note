@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+  <script>
+    //深拷贝
+    function deepCopy(oldobj) {
+      if (typeof oldobj !== 'object') {
+        return;
+      }
+      //数组和对象
+      let temp = Array.isArray(oldobj) ? [] : {};
+      for (let k in oldobj) {
+        // console.log(oldobj[k])
+        //数组和对象的内层数据拷贝
+        temp[k] =
+          typeof oldobj[k] === 'object' ? deepCopy(oldobj[k]) : oldobj[k];
+      }
+      return temp;
+    }
+    let arr = [1, 2, 3, 4, 5];
+    let arr1 = deepCopy(arr);
+    console.log(arr1);
+    arr1[2] = 9;
+    console.log(arr1);
+    console.log(arr);
+  </script>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //async  真正意义上解决异步回调的问题    同步流程表达异步操作
+      function promiseUtil() {
+        let hd = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve('服务器的返回数据');
+            // reject('失败');
+          }, 2000);
+        });
+        return hd;
+      }
+      //1、当执行异步任务的时候 await会堵塞后面的代码 加入微任务队列
+      //2、async+promise对象
+
+      //4、通过修改promise实例的状态来通知await以及给await指定返回值
+      async function AsyncUtil() {
+        console.log('函数开始执行');
+        let result = await promiseUtil();
+        console.log(`reslut:${result}`);
+        console.log('函数继续执行'); //异步
+        // try {
+        //   await promiseUtil();
+        // } catch (error) {
+        //   console.log(error);
+        // }
+        console.log('函数结束执行');
+      }
+      AsyncUtil();
+      console.log(1); //同步
+
+      // async function hd() {}
+      // console.log(
+      //   hd().then((res) => {
+      //     console.log(res);
+      //   })
+      // ); //调用async函数 返回一个Promise对象
+    </script>
+  </body>
+</html>

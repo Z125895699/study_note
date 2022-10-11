@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let str = 'abaasdffggghhjjkkgfddssss344343'
+        let o = {}
+        console.log(str.length)
+        console.log(str.charAt(0))
+        console.log(str.charAt(3))
+        console.log(str.charAt(5))
+        console.log(str.charAt(9))
+        console.log(str.indexOf('a'))
+        console.log(str.indexOf('c'))
+        console.log(str.indexOf('b'))
+        console.log(str.replace('g', 22))
+        console.log(str.substr(1, 5))
+        for (let i = 0; i < str.length; i++) {
+            let chars = str.charAt(i)
+            if (o[chars]) {
+                o[chars]++
+            } else {
+                o[chars] = 1
+            }
+        }
+        console.log(o)
+        let max = 0
+        let ch = ''
+        for (k in o) {
+            if (o[k] > max) {
+                max = o[k]
+                ch = k
+            }
+
+        }
+        console.log(max)
+        console.log(ch)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

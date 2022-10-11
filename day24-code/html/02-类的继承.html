@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //类的继承
+      // class Father {
+      //   constructor() {
+      //   }
+      //   money() {
+      //     console.log(100)
+      //   }
+      // }
+      // class Son extends Father {
+
+      // }
+      // //继承父亲的方法
+      // let son = new Son()
+      // son.money()
+
+      // *************
+      // class Father {
+      //   constructor(x, y) {
+      //     this.x = x
+      //     this.y = y
+      //   }
+      //   sum() {
+      //     //这里的this.x + this.y是父类的才可以进行相加
+      //     console.log(this.x + this.y)
+      //   }
+      // }
+      // class Son extends Father {
+      //   constructor(x, y) {
+      //     this.x = x
+      //     this.y = y
+      //   }
+      // }
+      // // 这里的1，2是传给子类的 constructor
+      // let son = new Son(1, 2)
+      // // 父类的sum方法并没有在子类中体现
+      // son.sum()
+      // ****************
+
+      class Father {
+        constructor(x, y) {
+          this.x = x;
+          this.y = y;
+        }
+        sum() {
+          //这里的this.x + this.y是父类的才可以进行相加
+          console.log(this.x + this.y);
+        }
+      }
+      class Son extends Father {
+        constructor(x, y) {
+          //使用super关键字调用父类constructor函数 也可以调用普通函数
+          super(x, y);
+        }
+      }
+      //这里的1，2是传给子类的 constructor
+      let son = new Son(1, 2);
+      son.sum();
+    </script>
+  </body>
+</html>

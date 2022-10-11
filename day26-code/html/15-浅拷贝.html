@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //对象是引用类型
+      // const info = { name: 'why', age: 19 }
+      // const obj = info
+      // info.name = 'kobe'
+      // console.log(obj.name) //kobe
+
+      //浅拷贝只是拷贝一层 更深层次对象级别的只拷贝引用地址
+      //深拷贝拷贝多层 每一级别的数据都会拷贝
+      let obj = {
+        id: 1,
+        name: 'andy',
+        msg: {
+          age: 18,
+        },
+      };
+      let o = {};
+      //浅拷贝遇到对象或者数组级别的拷贝的只是地址 指向的都是一个数据
+      //遍历
+      for (let k in obj) {
+        //k是属性名  obj[k]是属性值
+        o[k] = obj[k];
+      }
+      //浅拷贝  改变o的msg里面的值 原对象里面msg的值也会改变 因为拷贝的只是地址 指向的都是一个数据
+      console.log(o);
+      o.msg.age = 10;
+      console.log(obj);
+      //es6的浅拷贝
+      // Object.assign(o, obj);
+      // console.log(o);
+
+      //赋值操作
+      //a=b   一定是将b里面保存的数据赋值给a  要严格区分b里面到底保存是什么数据类型
+      //1、基本数据类型
+      // a = 1;
+      // b = a;
+      // b = 2;
+      // console.log(a); //1
+      // console.log(b);
+      // console.log(a === b); //false
+
+      // //2、引用类型
+      let a = new Object();
+      a.val = 1;
+      b = a;
+      b.val = 2;
+      console.log(a.val);
+      console.log(a.val === b.val); //true
+
+      //两者不同
+      // let arr = [1, 2, 3, 4];
+      // let arr1 = arr.concat();
+      // arr1[0] = 'true';
+      // console.log(arr, arr1);
+
+      //两者相同
+      // let arr = [1, { name: 'kobe' }, 3, 4];
+      // let arr1 = arr.concat();
+      // arr1[1].name = 'true';
+      // console.log(arr, arr1);
+
+      // 浅拷贝
+      let arr = [1, 2, 4, 5];
+      let arr1 = Array.from(arr);
+      console.log(arr1);
+      arr[0] = 3;
+      console.log(arr);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //微任务优先于宏任务
+      // 先把主线程里面的同步任务跑完 再去轮询任务队列
+      // 同步任务>微任务>宏任务
+      // 定时器是宏任务  Promise后面的then是微任务
+      // setTimeout(() => {
+      //   console.log(1)
+      // }, 1000)
+      // Promise.resolve().then((value) => {
+      //   console.log(2)
+      // })
+      // console.log(3)
+
+      // setTimeout(() => {
+      //   console.log('定时器')
+      //   new Promise((resolve) => {
+      //     console.log('Promise1') //   promise里面的执行器是同步任务  会和定时器一起执行
+      //     resolve()
+      //   }).then(() => {
+      //     console.log('then') //微任务
+      //   })
+      // }) //宏任务
+      // new Promise((resolve) => {
+      //   console.log('Promise2') //同步任务
+      //   resolve()
+      // }).then(() => {
+      //   console.log('then') //微任务
+      // })
+      // console.log('code') //同步
+
+      // let p1 = new Promise((resolve, reject) => {
+      //   resolve('fulfilled')
+      // })
+      // let p2 = p1.then(
+      //   (value) => console.log(value),
+      //   (reason) => console.log(reason)
+      // )
+      // console.log(p1) //Promise为成功状态
+      // console.log(p2) //then 也会返回一个Promise
+
+      // setTimeout(() => {
+      //   console.log(p1)
+      //   console.log(p2)
+      // })
+      // Promise {<fulfilled>: "fulfilled"}
+      // Promise {<fulfilled>: undefined}
+
+      let p1 = new Promise((resolve, reject) => {
+        resolve('fulfilled');
+        // reject('错误的')
+      })
+        .then((value) => {
+          class Hd {
+            //可以调用类的then方法
+            then(resolve, reject) {
+              setTimeout(() => {
+                console.log('这是对象');
+              }, 2000);
+            }
+          }
+          return new Hd();
+        })
+        .then((value) => {
+          console.log(value);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    </script>
+  </body>
+</html>

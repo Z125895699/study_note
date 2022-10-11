@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //var 没有块级作用域   永远用let
+        // let 不会提升  let不能重复定义
+        //const是常量的意思  可以改变对象的属性 定义对象和函数
+        // {
+        //     var a = 1
+        // }
+        //**********//
+        // console.log(a)
+        // {
+        //     let a = 1
+        // }
+        // console.log(a)
+        //**********//
+        // const a = 10
+        // a = 20
+        // console.log(a)
+        // const student = {
+        //     name: '小红'
+        // }
+        // student.name = '小黄'
+        // console.log(student.name)
+        //数组解构赋值
+        let [x, y, ...z] = ['a']
+        console.log(z)
+    </script>
+</body>
+
+</html>

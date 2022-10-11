@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //Es6的flat
+      let arr = [1, [2, 3], 4, [[5, 6, 7]]];
+      // console.log(arr.flat(3));
+
+      //递归
+      function flattern(arr, temp = []) {
+        for (let k in arr) {
+          if (Array.isArray(arr[k])) {
+            flattern(arr[k], temp);
+          } else {
+            temp.push(arr[k]);
+          }
+        }
+        return temp;
+      }
+      console.log(flattern(arr));
+
+      //递归
+      // function flattern(arr, result = []) {
+      //   for (let i in arr) {
+      //     if (typeof arr[i] === 'object') {
+      //       flattern(arr[i], result);
+      //     } else {
+      //       result.push(arr[i]);
+      //     }
+      //   }
+      //   return result;
+      // }
+      // console.log(flattern(arr));
+
+      //lodash的_.flatternDeep
+    </script>
+  </body>
+</html>

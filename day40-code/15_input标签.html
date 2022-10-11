@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <input placeholder="Enter some text" name="name" />
+    <p id="log"></p> -->
+
+    <p>Please click on the checkbox control.</p>
+
+    <form>
+      <label for="id-checkbox">Checkbox:</label>
+      <input type="checkbox" id="id-checkbox" />
+    </form>
+
+    <div id="output-box"></div>
+
+    <script>
+      // const input = document.querySelector('input');
+      // const log = document.getElementById('log');
+
+      // //change事件在输入文本后失去焦点前都不会触发
+      // input.addEventListener('change', updateValue);
+
+      // function updateValue(event) {
+      //   console.log(event);
+      //   log.textContent = event.target.value;
+      // }
+      document.querySelector('#id-checkbox').addEventListener(
+        'click',
+        function (event) {
+          document.getElementById('output-box').innerHTML +=
+            "Sorry! <code>preventDefault()</code> won't let you check this!<br>";
+          //选中复选框是点击复选框的默认行为. event.preventDefault()阻止点击复选框时选中复选框
+          event.preventDefault();
+        },
+        false
+      );
+    </script>
+  </body>
+</html>

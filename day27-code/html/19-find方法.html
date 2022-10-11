@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // let arr= [{
+      //   id: 1,
+      //   name: '张三'
+      // }, {
+      //   id: 2,
+      //   name: '李四'
+      // }];
+      // let target = arr.find((item, index) => item.id == 2)
+      // console.log(target)
+
+      let arr = [1, 5, 10, 15];
+      let index = arr.findIndex((value, index) => value > 10);
+      //找出第一个符合条件的成员  如果没有找到就返回-1
+      console.log(index);
+
+      // // includes()  前面包含后面
+      // console.log([1, 2, 4].includes(1)) //true
+    </script>
+  </body>
+</html>

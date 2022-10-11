@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // const jelly = {
+      //   name: 'jelly',
+      //   hobbies: ['Coding', 'Sleeping', 'Reading'],
+      //   printHobbies: function () {
+      //     //this指向jelly
+      //     // console.log(this);
+      //     //把这里的this给that
+      //     let that = this
+      //     this.hobbies.map(function (hobby) {
+      //       //this指向window  因为map里面的是一个回调函数 独立函数
+      //       // console.log(this);
+      //       console.log(`${that.name} loves${hobby}`)
+      //     })
+      //   }
+      // }
+      // jelly.printHobbies()
+
+      const jelly = {
+        name: 'jelly',
+        hobbies: ['Coding', 'Sleeping', 'Reading'],
+        printHobbies: function () {
+          //this指向jelly
+          console.log(this);
+          this.hobbies.map((hobby) => {
+            // 改为箭头函数 this 就指向外部函数this的指向
+            console.log(`${this.name} loves${hobby}`);
+          });
+        },
+      };
+      jelly.printHobbies();
+
+      // let obj = {
+      //   name: 'zd'
+      // }
+      // const fn = () => {
+      //   console.log(this);//指向window
+      // }
+      // // fn()
+      // // call 和apply不可以改变箭头函数的this
+      // fn.call(obj)
+      // fn.apply(obj)
+      // fn.bind(obj)
+    </script>
+  </body>
+</html>

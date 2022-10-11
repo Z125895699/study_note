@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      let obj = {
+        id: 1,
+        pname: '小米',
+        price: 1999,
+      };
+
+      // Object.defineProperty(obj, name, desc)
+
+      //如果有就是修改 没有就是添加
+      // Object.defineProperty 第三个参数以对象形式书写
+      Object.defineProperty(obj, 'price', {
+        value: 1000,
+      });
+      console.log(obj);
+      Object.defineProperty(obj, 'id', {
+        // 默认为false   不允许修改
+        writable: false,
+        enumerable: false, //目标属性是否可以被枚举 ，默认false
+        //configurable 目标属性是否可以被删除或者再次修改  默认false
+      });
+      obj.id = 2;
+      console.log(obj);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+a,
+del,
+ins {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+body {
+    font: 16px "微软雅黑";
+}
+img {
+    vertical-align: middle;
+}
+b,
+i,
+strong,
+em {
+    font-style: normal;
+    font-weight: normal;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}

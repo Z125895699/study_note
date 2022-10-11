@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // let hd = 'houdunren'
+      // let reg = /[a-z]+/g     //+贪婪匹配模式
+      // console.log(hd.match(reg));
+      // console.log(hd.match(/[^ue]+/gi));  //^取反
+      let hd = `张三:010-9999999999,李四:020-8888888`;
+      //匹配中文
+      console.log(hd.match(/[^\d:,\-]+/g));
+
+      //[\s\S]  [\d\D] 所有内容
+    </script>
+  </body>
+</html>

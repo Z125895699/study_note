@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //内存泄漏  不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）
+      //垃圾回收机制(GC) garbage collector
+      //垃圾回收机制
+      /*
+    计数清除   老版本
+    看内存的地址身上有几个指针指向 当一块内存地址身上指针个数为0 马上被回收
+    let obj={name;'kobe'}
+    obj=null
+
+
+
+    标记清除
+    进行到代码执行的环境以后检测到需要使用的变量就在其身上加一个进场标记
+    在代码执行完的时候就会在之前标记的变量身上再添加一个出场标记
+
+   */
+      let time = Date.now();
+      console.log(time);
+      setTimeout(() => {
+        console.log(`花费的时间:${Date.now() - time}`);
+      }, 2000);
+      //千万不要在定时器的后边放置任务量特别大的代码段
+      for (let i = 0; i < 1000000; i++) {
+        console.log(i);
+      }
+    </script>
+  </body>
+</html>

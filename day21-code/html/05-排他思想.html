@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <button>按钮5</button>
+    <script>
+        // 1、获取元素
+        let btns = document.getElementsByTagName('button')
+        //btns得到的是伪数组，里面的每一个元素btns[i]
+        for (let i = 0; i < btns.length; i++) {
+            //2、btn绑定事件 处理程序
+            btns[i].onclick = function () {
+                // console.log(1)
+                // 1、先把所有的背景颜色去掉 排他思想
+                for (let i = 0; i < btns.length; i++) {
+                    btns[i].style.backgroundColor = ''
+                }
+                // 2、然后才让当前的背景颜色变为pink
+                this.style.backgroundColor = 'pink'
+            }
+        }
+    </script>
+</body>
+
+</html>

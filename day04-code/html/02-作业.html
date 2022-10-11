@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            height: 42px;
+            background-color: red;
+        }
+
+        div ul {
+            width: 700px;
+            height: 42px;
+            /* border: 1px solid green; */
+            margin: auto;
+        }
+
+        div ul li {
+            /* 要写宽度和高度 文本居中 */
+            /* borsder: 1px solid green; */
+            list-style: none;
+            float: left;
+            line-height: 42px;
+            padding: 0 10px;
+        }
+
+        div ul li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .bg_1 {
+            background: url(../img/nav_hov_bg.jpg) -10px 0;
+        }
+
+        .bg_2 {
+            background: no-repeat url(../img/nav_li_bg.jpg) 80px 0;
+        }
+
+        div ul li:hover {
+            background-color: sandybrown;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li class="bg_1"><a href="#">网站首页</a></li>
+            <li class="bg_2"><a href="#">公司介绍</a></li>
+            <li class="bg_1"><a href="#">产品列表</a></li>
+            <li class="bg_2"><a href="#">网站首页</a></li>
+            <li class="bg_2"><a href="#">网站首页</a></li>
+            <li class="bg_2"><a href="#">网站首页</a></li>
+            <li class="bg_2"><a href="#">网站首页</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>

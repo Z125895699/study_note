@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let info = {
+        name: 'code',
+        age: 20,
+      };
+      let { name, age } = info;
+      console.log(name);
+      console.log(age);
+      //使用默认值
+      let { job = 'coding' } = info;
+      console.log(name, age, job);
+      // null和undefined不能使用解构
+      // let { _ } = null
+
+      //可以不用在解构表达式中声明变量 但是赋值表达式必须包括在一对括号中
+      let personName, personAge;
+      let info1 = {
+        name: 'code',
+        age: 20,
+      };
+      ({ name: personName, age: personAge } = info1);
+      console.log(personName, personAge);
+
+      //嵌套解构
+      let info2 = {
+        name: 'code',
+        age: 20,
+        job: {
+          work: 'coding',
+        },
+      };
+      let person = {};
+      ({ name: person.name, age: person.age, job: person.job } = info2);
+      console.log(person);
+      let {
+        job: { work },
+      } = info2;
+      console.log(work);
+
+      let info3 = {
+        name: 'code',
+        age: 20,
+      };
+      function printPerson(foo, { name, age }, bar) {
+        console.log(arguments);
+        console.log(name, age);
+      }
+      printPerson('foo', person, 'bar');
+    </script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      float: left;
+      width: 50px;
+      height: 50px;
+      border: 1px solid #999;
+      color: red;
+      text-align: center;
+      font-size: 25px;
+      line-height: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hour"></div>
+  <div class="minute"></div>
+  <div class="second"></div>
+  <script>
+    //获取事件源
+    let hour = document.querySelector('.hour')
+    let minute = document.querySelector('.minute')
+    let second = document.querySelector('.second')
+    //用户输入的时间戳
+    let inputTime = +new Date('2021-07-26 18:00:00')
+    // 防止刷新有一秒时间没有执行
+    countDown()
+    //绑定事件 处理事件
+    //开启定时器 用setInterval定时器 每一秒都可以执行回调函数
+    setInterval(countDown, 1000)
+    function countDown(time) {
+      //返回当前的事件戳
+      let nowTime = Date.now()
+      //用户输入的时间戳减当前的时间戳
+      let times = (inputTime - nowTime) / 1000
+      let h = parseInt(times / 60 / 60 % 24)
+      h = h >= 10 ? h : '0' + h
+      // 把小时的倒计时给第一个盒子
+      hour.innerHTML = h
+      let m = parseInt(times / 60 % 60)
+      m = m >= 10 ? m : '0' + m
+      // 把分钟的倒计时给第二个盒子
+      minute.innerHTML = m
+      let s = parseInt(times % 60)
+      s = s >= 10 ? s : '0' + s
+      // 把秒的倒计时给第三个盒子
+      second.innerHTML = s
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let person = { age: 20 };
+      Object.defineProperty(person, 'name', {
+        //是否可以被删除
+        configurable: true,
+        //是否可以用for in遍历
+        enumerable: true,
+        //是否可以被修改
+        writable: false,
+        value: 'code',
+        //get
+        //set
+      });
+      console.log(person.name);
+      person.name = 'why';
+      console.log(person.name);
+      for (const item in person) {
+        console.log(item);
+      }
+      let result = Object.getOwnPropertyDescriptor(person, 'name');
+      console.log(result.value);
+    </script>
+  </body>
+</html>

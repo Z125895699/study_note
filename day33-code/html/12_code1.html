@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let info = {
+        name: 'code',
+        age: 20,
+        data: {
+          message: 'kobe',
+        },
+      };
+      let o = {};
+      const result = Object.assign(o, info);
+      console.log(o);
+      o.data.message = 'James';
+      console.log(info.data.message);
+      console.log(o.data.message);
+    </script>
+  </body>
+</html>

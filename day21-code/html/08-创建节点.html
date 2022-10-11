@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <ul>
+        <li>123</li>
+        <li>345</li>
+        <li>567</li>
+    </ul>
+    <script>
+        // 1、创建节点
+        let li = document.createElement('li')
+        // 2、添加节点   追加元素 在后面添加元素
+        let ul = document.querySelector('ul')
+        ul.appendChild(li)
+        // console.log(ul)
+        //在指定元素前面添加元素
+        ul.insertBefore(li, ul.children[0])
+
+        //删除节点 node.removeChild(child)
+        ul.removeChild(ul.children[0])
+        //点击按钮删除li 给btn绑定事件
+        let btn = document.querySelector('button')
+        btn.onclick = function () {
+            if (ul.children.length == 0) {
+                // li删除完了就让按钮禁用
+                this.disabled = true
+            } else {
+                ul.removeChild(ul.children[0])
+            }
+        }
+        //复制节点 node.cloneNode()  ()为空或者为false 浅拷贝 不拷贝内容
+        //true为深拷贝 标签有的内容都会有
+        let lili = ul.children[0].cloneNode(true)
+        console.log(lili)
+        ul.appendChild(lili)
+    </script>
+</body>
+
+</html>

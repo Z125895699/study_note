@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      Function.prototype.hycall = function (thisArg, ...args) {
+        //需要知道那个函数调用了hycall
+        //1、获取调用的函数 this就是调用的函数
+        var fn = this;
+
+        //2、把thisArg转换成对象类型(防止传入的不是对象类型)
+        thisArg = thisArg ? Object(thisArg) : window;
+
+        //3、调用绑定的函数
+        thisArg.fn = fn;
+        //隐式绑定 这样就绑定到thisArg
+        thisArg.fn(...args);
+        delete thisArg.fn;
+      };
+
+      function foo(num1, num2) {
+        console.log(num1 + num2, this);
+      }
+      function bar() {
+        console.log('bar函数执行', this);
+      }
+
+      // foo.call(123);
+      foo.hycall(123, 10, 20);
+      // bar.hycall(null);
+    </script>
+  </body>
+</html>

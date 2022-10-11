@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //筛选数组 过滤数组 filter   返回给一个新数组
+      //第一个参数是数组当前的值   第二个参数是数组当前的索引号  第三个参数是数组本身
+      // let arr = [12, 66, 4, 99, 10]
+      // let newArr = arr.filter(function (value, index) {
+      //     // return value >= 20
+      //     //能被2整除的索引号处于的值
+      //     return 2 % index === 0
+      // })
+      // console.log(newArr)
+
+      //自己实现的过滤
+      let hd = [1, 2, 3, 4];
+      function filter(array, callback) {
+        let newArr = [];
+        for (const value of array) {
+          if (callback(value) === true) {
+            newArr.push(value);
+          }
+        }
+        return newArr;
+      }
+      console.log(
+        filter(hd, function (value) {
+          return value > 2;
+        })
+      );
+
+      //some 检测数组元素是够满足指定条件 返回的是布尔值
+      // let arr = [10, 29, 30, 2]
+      // let newArr = arr.some(function (value) {
+      //     return value >= 20
+      // })
+      // console.log(newArr) //返回布尔值
+      //1、filter 返回的是数组  把所有满足条件的元素都返回
+      // 2、 some 返回的是一个布尔值   如果查找到第一个满足条件的元素 就终止查找    查找唯一的元素some更方便
+    </script>
+  </body>
+</html>

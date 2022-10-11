@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    手机号码: <input type="text" name="" id="">
+    <button>发送</button>
+    <script>
+        //获取事件源
+        let btn = document.querySelector('button')
+        let time = 5
+        btn.addEventListener('click', function () {
+            //禁用按钮
+            this.disabled = true
+            let timer = setInterval(function () {
+                //如果到0，就清除定时器和复原按钮
+                if (time === 0) {
+                    clearInterval(timer)
+                    btn.disabled = false
+                    btn.innerHTML = '发送'
+                } else {
+                    // btn.innerHTML = '还剩下' + time + '秒'
+                    btn.innerHTML = `还剩下${time}秒`
+                    time--
+                }
+            }, 1000)
+        })
+    </script>
+</body>
+
+</html>

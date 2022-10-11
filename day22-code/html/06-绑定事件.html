@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>传统注册事件</button>
+  <button>监听注册事件</button>
+  <script>
+    let btns = document.querySelectorAll('button')
+    // 传统绑定事件
+    // 具有唯一性
+    btns[0].onclick = function () {
+      alert('hi')
+    }
+    btns[0].onclick = function () {
+      alert('hou au')
+    }
+    // 事件监听注册事件  addEventListener里面的事件类型是字符串，必定加引号，不加on
+    // 同一个元素  同一个事件可以添加多个监听器
+    btns[1].addEventListener('click', function () {
+      alert(33)
+    })
+    btns[1].addEventListener('click', function () {
+      alert(22)
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // Array.prototype.first = function () {
+      //   return this[0]
+      // }
+      const fruits = ['Apple', 'Banana', 'Orange', 'Mango']
+      fruits.describle = 'My favorite fruits'
+      //遍历  for太麻烦
+      // for (let i = 0; i < fruits.length; i++) {
+      //     console.log(fruits[i]);
+      // }
+
+      // forEach 方法 不能终止
+      // fruits.forEach((fruit) => {
+      //     if (fruit === 'Orange') {
+      //         continue
+      //     }
+      //     console.log(fruit)
+      // })
+
+      // let obj = {
+      //   name: 'zd',
+      //   age: 19
+      // }
+      // for (let k in obj) {
+      //   console.log(k)   //属性名
+      //   console.log(obj[k])   //属性值
+      // }
+      // for in  遍历的是可枚举属性  可以遍历非数字属性
+      for (let index in fruits) {
+        console.log(fruits[index])
+      }
+
+      //    for of 不会遍历非数字属性  也会有终止循环
+      // 不能遍历对象
+      for (let fruit of fruits) {
+        console.log(fruit)
+      }
+    </script>
+  </body>
+</html>

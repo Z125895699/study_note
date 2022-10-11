@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // function Cat(name, color) {
+        //     this.name = name
+        //     this.color = color
+        // }
+        // let Cat1 = new Cat('大毛', '黄色')
+        // let Cat2 = new Cat('二毛', '黑色')
+        // // document.write(Cat1.name)
+        // // document.write(Cat2.color)
+        // console.log((Cat1.constructor == Cat))
+        // function Animal() {
+
+        //     this.species = "动物"
+
+        // }
+        // function Cat(name, color) {
+
+        //     this.name = name
+
+        //     this.color = color
+        // }
+        // 我们将Cat的prototype对象指向一个Animal的实例
+        // Cat.prototype = new Animal()
+
+        //现在 Cat的prototype对象的constructor属性指向Animal，所以要更改将Cat.prototype对象的constructor值改为Cat
+        // Cat.prototype.constructor = Cat
+
+        // let cat1 = new Cat('老大', '黄毛')
+
+        // console.log(cat1.species);
+        //**************************//
+        function Animal() { }
+
+        // 写在Animal对象外面
+        Animal.prototype.species = "动物"
+
+
+        function Cat(name, color) {
+
+            this.name = name
+
+            this.color = color
+        }
+        // Animal本身有一个prototype属性，指向另一个对象。这个对象的所有属性和方法，都会被构造函数的实例继承。现在Cat的prototype对象指向这个对象，
+        // Cat.prototype = Animal.prototype
+        // Cat.prototype和Animal.prototype现在指向了同一个对象，那么任何对Cat.prototype的修改，都会反映到Animal.prototype。
+        // 这一句实际上把Animal.prototype对象的constructor属性也改掉了
+        // Cat.prototype.constructor = Cat
+
+        // var cat1 = new Cat("大毛", "黄色")
+        //***************************//
+        // 利用空对象
+        let F = function () { }
+
+        F.prototype = Animal.prototype
+
+        Cat.prototype = new F()
+
+        Cat.prototype.constructor = Cat
+
+        let cat1 = new Cat('大毛', '黄色')
+
+        alert(cat1.species)
+        // console.log(cat1.species);
+    </script>
+</body>
+
+</html>

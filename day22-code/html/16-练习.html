@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //构造函数中的属性是在实例对象中的
+        function Person(age, sex) {
+            this.age = age;
+            this.sex = sex;
+            this.sing = function () {
+                console.log('hi')
+            }
+        }
+        //实例对象per通过构造函数进行创建，原型对象是有了构造函数就会产生的
+        let per = new Person(20, '男')
+        // console.dir(Person)
+        // console.dir(per)
+        //实例对象中没有方法，但是可以调用，是因为实例对象的原型__proto__指向了构造函数的原型对象（桥梁），所以可以调用
+        per.sing()
+
+    </script>
+</body>
+
+</html>

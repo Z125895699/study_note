@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.main {
+    position: relative;
+    width: 721px;
+    height: 455px;
+    background-color: purple;
+    margin: auto;
+    overflow: hidden;
+}
+.arrow-l,
+.arrow-r {
+    display: none;
+    position: absolute;
+    top: 180px;
+    left: 695px;
+    width: 10px;
+    height: 10px;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    transform: rotate(-45deg);
+    z-index: 2;
+}
+.arrow-r {
+    top: 180px;
+    left: 5px;
+    transform: rotate(135deg);
+}
+
+
+.main ul {
+    position: absolute;
+    top: 0;
+    left: 0; 
+    width: 600%;
+}
+li {
+    width: 721px;
+    height: 455px;
+    float: left;
+    text-decoration: none;
+    list-style: none;
+}
+.circle {
+    position: absolute;
+    left: 50px;
+    bottom: 10px;
+}
+.circle li {
+    float: left;
+    width: 8px;
+    height: 8px;
+    /*background-color: #fff;*/
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    margin: 0 3px;
+    border-radius: 50%;
+    /*鼠标经过显示小手*/
+    cursor: pointer;
+}
+.current {
+    background-color: #fff;
+}

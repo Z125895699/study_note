@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Person() {}
+      Person.prototype = {
+        // constructor是默认不可枚举的 所以不能在对象里直接定义
+        // constructor: Person,
+        name: 'code',
+        age: 20,
+        job: 'coding',
+      }
+      Object.defineProperty(Person.prototype, 'constructor', {
+        //改为不可枚举的
+        enumerable: false,
+        value: Person,
+      })
+      let person = new Person()
+      console.log(person.__proto__ === Person.prototype)
+      console.log(Person.prototype.constructor === Person)
+      console.log(Person.prototype.__proto__ === Object.prototype)
+      console.log(person.constructor === Person)
+      person.name = 'James'
+      console.log(person.name)
+      console.log(person.hasOwnProperty('name'))
+      //可枚举的属性
+      let keys = Object.keys(Person.prototype)
+      console.log(keys)
+      let keys1 = Object.keys(person)
+      console.log(keys1)
+      //所有属性
+      let keys2 = Object.getOwnPropertyNames(Person.prototype)
+      console.log(keys2)
+    </script>
+  </body>
+</html>

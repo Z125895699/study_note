@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // var name = 'The Window';
+      // var object = {
+      //   name: 'My Object',
+      //   getNameFunc() {
+      //     return function () {
+      //       return this.name;
+      //     };
+      //   },
+      // };
+      // // object.getNameFunc()//这个时候没有执行this.name
+      // // // 返回的是 function () {
+      // // return this.name;
+      // //     }
+      // console.log(object.getNameFunc()()); //The Window
+
+      //闭包************//
+      // var name = 'The Window';
+      // var object = {
+      //   name: 'My Object',
+      //   getNameFunc() {
+      //     //这个this指向object
+      //     var that = this; //缓存this
+      //     return function () {
+      //       return that.name;
+      //     };
+      //   },
+      // };
+      // console.log(object.getNameFunc()()); //My Object
+      // let tmp = object.getNameFunc() //这个时候执行了var that = this
+      // let net = tmp()
+      // alert(net)
+
+      // *******************//
+      // let name = 'The Window'
+      // let object = {
+      //   name: 'My Object',
+      //   getNameFunc() {
+      //     return this.name
+      //   },
+      // }
+      // console.log(object.getNameFunc())
+
+      //******************//
+      // let name = 'The Window';
+      // let object = {
+      //   name: 'My Object',
+      //   getNameFunc() {
+      //     return function () {
+      //       return this.name; //这个this是有上下文的限制的
+      //     };
+      //   },
+      // };
+      // console.log(object.getNameFunc()()); //The Window
+
+      // //****************//
+      // var name = 'The Window';
+      // var object = {
+      //   name: 'My Object',
+      //   getNameFunc() {
+      //     var that = this; //存储this的指向
+      //     return function () {
+      //       return that.name;
+      //     };
+      //   },
+      // };
+      // console.log(object.getNameFunc()()); //My Object
+    </script>
+  </body>
+</html>

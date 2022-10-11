@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //prototype 原型对象 一般情况 公共的属性定义放到构造函数里面 公共的方法放到原型对象身上
+      function Star(uname, age) {
+        this.uname = uname;
+        this.age = age;
+      }
+      // Star.prototype.sing = function () {
+      //     console.log('song')
+      // }
+      Star.prototype = {
+        //手动利用constructor属性指向原来的构造函数
+        constructor: Star,
+        sing: function () {
+          console.log('song');
+        },
+      };
+      let ldh = new Star('刘德华', 18);
+      ldh.sing();
+      //对象身上系统自己添加__protp__ 指向我们构造函数的原型对象prototype
+      // __protp__  对象原型和原型对象 prototype  是等价的
+      console.log(ldh.__proto__ === Star.prototype);
+      //ldh.__proto__和Star.prototype的构造函数指向原来构造函数
+      console.log(ldh.__proto__.constructor);
+      console.log(Star.prototype.constructor);
+      //只要是对象就有__proto__原型 指向原型对象
+      console.log(Star.prototype.__proto__ === Object.prototype);
+      //Object.prototype 原型对象里面的__proto__指向为null
+      console.log(Object.prototype.__proto__);
+    </script>
+  </body>
+</html>
