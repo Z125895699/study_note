@@ -1,0 +1,32 @@
+<!--
+ * @Author: zhangdi 1258956799@qq.com
+ * @Date: 2022-12-25 00:30:06
+ * @LastEditors: zhangdi 1258956799@qq.com
+ * @LastEditTime: 2022-12-25 00:49:42
+ * @FilePath: /2107/day48-code/01.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="https://z125895699.github.io/dashu.github.io/">点击跳转</a>
+  <script>
+    let a =document.querySelector('a')
+    addEventListener('click',function(e){
+      console.log(e.cancelable);
+      if(e.preventDefault){
+        console.log(window.event.returnValue);
+        e.preventDefault(); //取消a标签的默认行为
+      }else{
+        window.event.returnValue == false;
+      }
+    })
+  </script>
+</body>
+</html>

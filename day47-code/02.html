@@ -1,0 +1,51 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: coderdashu
+ * @Date: 2022-11-12 23:32:35
+ * @LastEditors: Andy
+ * @LastEditTime: 2022-11-12 23:39:10
+-->
+主要应用场景：图片预览
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <input type="file" name="file" id="file" multiple></br>
+    <button id="fileTobase">File 转 Base64</button><br>
+    <img id="img" src="" alt="">
+    <script>
+        // 文件类型转base64
+        const fileToBase64 = (file, callback) => {
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+              console.log(evt);
+                if(typeof callback === 'function') {
+                    callback(evt.target.result)
+                } else {
+                    console.log("我是base64:", evt.target.result);
+                }
+            };
+            reader.readAsDataURL(file);
+        };
+        $("#fileTobase").click(function (e) {
+            e.preventDefault();
+            // 获取文件对象
+            const _file = $("#file")[0].files[0];
+            console.log(_file);
+            const base64 = fileToBase64(_file, base64 => {
+                console.log('我是base64:', base64);
+                // 预览图片
+                $("#img").attr({"src": base64})
+            });
+        });
+
+    </script>
+</body>
+</html>
+

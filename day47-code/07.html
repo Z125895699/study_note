@@ -1,0 +1,35 @@
+<!--
+ * @Author: zhangdi 1258956799@qq.com
+ * @Date: 2022-11-18 22:41:09
+ * @LastEditors: zhangdi 1258956799@qq.com
+ * @LastEditTime: 2022-11-20 17:56:00
+ * @FilePath: /2107/day47-code/07.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+
+<body>
+  使用get请求,使用multipart/form-data请求头
+  <form method="get" action="xxx" enctype="multipart/form-data">
+      <label for="name">name</label>
+      <input type="text" id="name" name="name">
+      <label for="file">file</label>
+      <input type="file" id="file" name="file" />
+      <input type="submit" value="submit" name="submit">
+  </form>
+  使用post请求,使用application/x-www-form-urlencoded请求头
+  <form method="post" action="xxx" enctype="multipart/form-data">
+      <label for="name">name</label>
+      <input type="text" id="name" name="name">
+      <label for="file">file</label>
+      <input type="file" id="file" name="file" />
+      <input type="submit" value="submit" name="submit">
+  </form>
+</body>
+</html>
