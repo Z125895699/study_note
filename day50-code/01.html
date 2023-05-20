@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesseract.js OCR 示例</title>
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@2.0.0-beta.2"></script>
+    <style>
+      #progressBar {
+          width: 100%;
+          background-color: #f3f3f3;
+          position: relative;
+      }
+      #progress {
+          width: 0%;
+          height: 30px;
+          background-color: #4CAF50;
+          text-align: center;
+          line-height: 30px;
+          color: white;
+          position: absolute;
+      }
+    </style> 
+</head>
+<body>
+  <image id="myImage"/>
+  <div id="progressBar">
+    <div id="progress">正在识别中...</div>
+  </div>
+  <script>
+        let imageUrl = './01.png';
+        const imageElement = document.getElementById('myImage');
+        console.log(imageElement); 
+        imageElement.src = imageUrl;
+        const progressElement = document.getElementById('progress');
+
+        function updateProgress(progress) {
+          if (progress > 0 && progress <= 1) {
+            const percentage = (progress * 100).toFixed(2);
+            progressElement.style.width = percentage + '%';
+            progressElement.textContent = percentage + '%';
+          }else if(progress === 0){
+            progressElement.textContent = '正在识别中...'
+          }
+        }
+
+        (async () => {
+            try {
+                const worker = Tesseract.createWorker({
+                    logger: (progressInfo) => {
+                      console.log(progressInfo)
+                      updateProgress(progressInfo.progress)
+                    },
+                });
+
+                await worker.load();
+                await worker.loadLanguage('chi_sim');
+                await worker.initialize('chi_sim');
+
+                const {
+                    data: { text },
+                } = await worker.recognize(imageUrl);
+
+                console.log('识别结果：', text);
+
+                await worker.terminate();
+            } catch (error) {
+                console.error('识别错误：', error);
+            }
+        })();
+    </script>
+</body>
+</html>
