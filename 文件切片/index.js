@@ -1,8 +1,6 @@
 const fs = require('fs/promises')
 const fsSync = require('fs')
 const path = require('path')
-const { log } = require('console')
-
 
 const CHUNK_SIZE = 1024 * 10
 //定义一个临时目录
