@@ -1,0 +1,12 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "build:babel-project": "pnpm --filter babel-project build",
+    "start:swc-project": "pnpm --filter swc-project build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^7.1.3"
+  }
+}
