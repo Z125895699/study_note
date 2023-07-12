@@ -1,5 +1,11 @@
 {
   "presets": [
-    "@babel/preset-env"
+    [
+      "@babel/preset-env",
+      //保留 import 和 export 语句,默认会转换成CommonJS
+      {
+        "modules": false
+      }
+    ]
   ]
 }

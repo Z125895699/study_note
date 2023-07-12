@@ -25,6 +25,10 @@ importers:
         version: 7.22.7(@babel/core@7.22.8)
 
   packages/swc-project:
+    dependencies:
+      babel-project:
+        specifier: workspace:*
+        version: link:../babel-project
     devDependencies:
       '@swc/cli':
         specifier: ^0.1.62

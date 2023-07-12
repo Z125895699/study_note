@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build:babel-project": "pnpm --filter babel-project build",
-    "start:swc-project": "pnpm --filter swc-project build"
+    "start:swc-project": "pnpm --filter swc-project start"
   },
   "dependencies": {},
   "devDependencies": {
