@@ -1,5 +1,10 @@
 
 
+/**
+ * 数组扁平
+ * @param {*} arr 
+ * @returns 
+ */
 function flatten(arr){
   if(!arr.length) return []
 

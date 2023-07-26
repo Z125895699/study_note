@@ -59,15 +59,17 @@ function trigger(target,key){
 //用一个全局变量存储被注册的副作用函数
 let activeEffect
 
+//注册副作用函数
 function effect(fn,options){
+  //指向同一个函数对象
   activeEffect = fn
   fn.options = options
   fn()
 }
 
-//执行副作用函数
+//用来创建副作用函数
 effect(()=>{
-    console.log('effect1',data. age)
+    console.log('effect1',data.age)
   },
   {
     scheduler(fn){

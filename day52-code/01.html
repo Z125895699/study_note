@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+
+    <script type="module">
+      import { debounce } from './debounce.js';
+      import { throttle } from './throttle.js';
+      console.log(debounce,throttle)
+      let input = document.querySelector('input');
+      // input.oninput = debounce(function () {
+      //   console.log(this.value)
+      // }, 500);
+      input.oninput = throttle(function () {
+        console.log(this.value)
+      }, 1000);
+    </script>
+  </body>
+</html>

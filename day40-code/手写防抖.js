@@ -7,3 +7,9 @@ function debounce(fn, delay) {
     }, delay);
   };
 }
+
+function log(){
+  console.log(1)
+}
+
+debounce(log())
