@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Chunk Upload</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+<body>
+    <input type="file" id="file">
+    <button onclick="startUpload()">Upload</button>
+    <script>
+        let file;
+        let fileSize;
+        let chunkSize = 1024 * 1024 * 10; // 分片大小10MB
+        let chunksCount;
+        let uploadedChunks = new Set();  // 用于记录已经上传的分片
+        let serverUrl = 'http://127.0.0.1:3000';  // 后端服务器地址和端口
+
+        document.getElementById('file').addEventListener('change', function() {
+            file = this.files[0];
+            fileSize = file.size;
+            //总共需要多少次
+            chunksCount = Math.ceil(fileSize / chunkSize);
+            console.log('chunksCount',file,chunksCount)
+        });
+
+        async function checkStatus(filename) {
+            let response = await fetch(`${serverUrl}/status?filename=${filename}`);
+            let { uploaded } = await response.json();
+            console.log('uploaded',uploaded)
+            //如果有已经上传的分片,就添加到uploadedChunks
+            uploaded.forEach(index => uploadedChunks.add(index));
+        }
+
+        async function uploadChunk(chunk, index, filename,hash) {
+            if (uploadedChunks.has(index)) {
+                return;  // 如果该分片已经上传，跳过
+            }
+
+            let formData = new FormData();
+            formData.append('chunk', chunk);
+            formData.append('index', index);
+            formData.append('filename', filename);
+            formData.append('hash', hash);
+            await fetch(`${serverUrl}/upload`, { method: 'POST', body: formData });
+            uploadedChunks.add(index);  // 标记该分片已经上传
+
+            // console.log('合并',uploadedChunks.size,chunksCount)
+            // 如果所有分片都上传了，请求合并
+            if (uploadedChunks.size === chunksCount) {
+              console.log('合并')
+              let response = await fetch(`${serverUrl}/merge`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ filename, chunksCount })
+                });
+            console.log('await response.json()',await response.json())
+            }
+        }
+
+        async function startUpload() {
+            if (!file) {
+                alert('Please select a file!');
+                return;
+            }
+
+            await checkStatus(file.name);
+
+            let chunks = Array(chunksCount).fill(null).map((_, index) => {
+                //开始位置
+                let start = index * chunkSize;
+                //结束位置
+                let end = Math.min(start + chunkSize, fileSize);
+                return file.slice(start, end);
+            });
+
+            // 使用 FileReader API 和 crypto-js 计算每个分片的哈希
+            let hashes = await Promise.all(chunks.map(chunk => {
+              return new Promise((resolve, reject) => {
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                  let arrayBuffer = e.target.result;
+                  let wordArray = CryptoJS.lib.WordArray.create(arrayBuffer);
+                  let hash = CryptoJS.SHA256(wordArray);
+                  resolve(hash.toString(CryptoJS.enc.Hex));
+                };
+                reader.onerror = reject;
+                reader.readAsArrayBuffer(chunk);
+              });
+            }));
+
+            console.log('chunks',chunks)
+
+            chunks.forEach((chunk, index) => {
+                uploadChunk(chunk, index, file.name,hashes[index]);
+            });
+        }
+    </script>
+</body>
+</html>
