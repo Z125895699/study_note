@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Chunk Upload</title>
+</head>
+<body>
+    <input type="file" id="file">
+    <button onclick="startUpload()">Upload</button>
+
+    <script>
+        let file;
+        let fileSize;
+        let chunkSize = 1024 * 1024; // 分片大小1MB
+        let chunksCount;
+        let uploadedChunks = new Set();  // 用于记录已经上传的分片
+
+        document.getElementById('file').addEventListener('change', function() {
+            file = this.files[0];
+            fileSize = file.size;
+            chunksCount = Math.ceil(fileSize / chunkSize);
+        });
+
+        async function checkStatus(filename) {
+            let response = await fetch(`/status?filename=${filename}`);
+            let { uploaded } = await response.json();
+            uploaded.forEach(index => uploadedChunks.add(index));
+        }
+
+        async function uploadChunk(chunk, index, filename) {
+            if (uploadedChunks.has(index)) {
+                return;  // 如果该分片已经上传，跳过
+            }
+
+            let formData = new FormData();
+            formData.append('chunk', chunk);
+            formData.append('index', index);
+            formData.append('filename', filename);
+            await fetch('/upload', { method: 'POST', body: formData });
+            uploadedChunks.add(index);  // 标记该分片已经上传
+
+            // 如果所有分片都上传了，请求合并
+            if (uploadedChunks.size === chunksCount) {
+                await fetch('/merge', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ filename, chunksCount })
+                });
+            }
+        }
+
+        async function startUpload() {
+            if (!file) {
+                alert('Please select a file!');
+                return;
+            }
+
+            await checkStatus(file.name);
+
+            let chunks = Array(chunksCount).fill(null).map((_, index) => {
+                let start = index * chunkSize;
+                let end = Math.min(start + chunkSize, fileSize);
+                return file.slice(start, end);
+            });
+
+            chunks.forEach((chunk, index) => {
+                uploadChunk(chunk, index, file.name);
+            });
+        }
+    </script>
+</body>
+</html>
