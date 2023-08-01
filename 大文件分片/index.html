@@ -8,30 +8,41 @@
     <input type="file" id="file">
     <button onclick="startUpload()">Upload</button>
     <script>
+        var worker = new Worker('worker.js');
+        console.log(worker,'worker')
         let file;
         let fileSize;
         let chunkSize = 1024 * 1024 * 10; // 分片大小10MB
         let chunksCount;
+        let chunks;
         let uploadedChunks = new Set();  // 用于记录已经上传的分片
         let serverUrl = 'http://127.0.0.1:3000';  // 后端服务器地址和端口
 
         document.getElementById('file').addEventListener('change', function() {
             file = this.files[0];
-            fileSize = file.size;
-            //总共需要多少次
-            chunksCount = Math.ceil(fileSize / chunkSize);
-            console.log('chunksCount',file,chunksCount)
+            worker.postMessage(file);
+
+            worker.onmessage = function(e) {
+                console.log('e.data',e.data)
+                chunks = e.data;
+                chunksCount = chunks.length
+                // 对切片数据进行处理，比如上传
+            };
+            // fileSize = file.size;
+            // //总共需要多少次
+            // chunksCount = Math.ceil(fileSize / chunkSize);
+            // console.log('chunksCount',file,chunksCount)
         });
 
         async function checkStatus(filename) {
             let response = await fetch(`${serverUrl}/status?filename=${filename}`);
             let { uploaded } = await response.json();
-            console.log('uploaded',uploaded)
+            // console.log('uploaded',uploaded)
             //如果有已经上传的分片,就添加到uploadedChunks
             uploaded.forEach(index => uploadedChunks.add(index));
         }
 
-        async function uploadChunk(chunk, index, filename,hash) {
+        async function uploadChunk(chunk, index, filename) {
             if (uploadedChunks.has(index)) {
                 return;  // 如果该分片已经上传，跳过
             }
@@ -40,7 +51,7 @@
             formData.append('chunk', chunk);
             formData.append('index', index);
             formData.append('filename', filename);
-            formData.append('hash', hash);
+            // formData.append('hash', hash);
             await fetch(`${serverUrl}/upload`, { method: 'POST', body: formData });
             uploadedChunks.add(index);  // 标记该分片已经上传
 
@@ -65,33 +76,35 @@
 
             await checkStatus(file.name);
 
-            let chunks = Array(chunksCount).fill(null).map((_, index) => {
-                //开始位置
-                let start = index * chunkSize;
-                //结束位置
-                let end = Math.min(start + chunkSize, fileSize);
-                return file.slice(start, end);
-            });
+            // let chunks = Array(chunksCount).fill(null).map((_, index) => {
+            //     //开始位置
+            //     let start = index * chunkSize;
+            //     //结束位置
+            //     let end = Math.min(start + chunkSize, fileSize);
+            //     return file.slice(start, end);
+            // });
+
+            console.log('chunks',chunks)
 
             // 使用 FileReader API 和 crypto-js 计算每个分片的哈希
-            let hashes = await Promise.all(chunks.map(chunk => {
-              return new Promise((resolve, reject) => {
-                let reader = new FileReader();
-                reader.onload = function(e) {
-                  let arrayBuffer = e.target.result;
-                  let wordArray = CryptoJS.lib.WordArray.create(arrayBuffer);
-                  let hash = CryptoJS.SHA256(wordArray);
-                  resolve(hash.toString(CryptoJS.enc.Hex));
-                };
-                reader.onerror = reject;
-                reader.readAsArrayBuffer(chunk);
-              });
-            }));
+            // let hashes = await Promise.all(chunks.map(chunk => {
+            //   return new Promise((resolve, reject) => {
+            //     let reader = new FileReader();
+            //     reader.onload = function(e) {
+            //       let arrayBuffer = e.target.result;
+            //       let wordArray = CryptoJS.lib.WordArray.create(arrayBuffer);
+            //       let hash = CryptoJS.SHA256(wordArray);
+            //       resolve(hash.toString(CryptoJS.enc.Hex));
+            //     };
+            //     reader.onerror = reject;
+            //     reader.readAsArrayBuffer(chunk);
+            //   });
+            // }));
 
             console.log('chunks',chunks)
 
             chunks.forEach((chunk, index) => {
-                uploadChunk(chunk, index, file.name,hashes[index]);
+                uploadChunk(chunk, index, file.name);
             });
         }
     </script>
