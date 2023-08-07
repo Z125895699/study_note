@@ -52,7 +52,11 @@
             formData.append('index', index);
             formData.append('filename', filename);
             // formData.append('hash', hash);
-            await fetch(`${serverUrl}/upload`, { method: 'POST', body: formData });
+            await fetch(`${serverUrl}/upload`,
+             { 
+                method: 'POST', 
+                body: formData
+             });
             uploadedChunks.add(index);  // 标记该分片已经上传
 
             // console.log('合并',uploadedChunks.size,chunksCount)
