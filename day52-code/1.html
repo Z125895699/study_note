@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Workers Demo</title>
+</head>
+<body>
+    <script>
+        const worker1 = new Worker('worker.js');
+        const worker2 = new Worker('worker.js');
+
+        let array = [];
+
+        worker1.onmessage = function(e) {
+            array = e.data.array;
+            console.log('Worker 1 updated the array:', array);
+        }
+
+        worker2.onmessage = function(e) {
+            array = e.data.array;
+            console.log('Worker 2 updated the array:', array);
+        }
+
+        // Start both workers
+        worker1.postMessage({ cmd: 'start', array: array });
+        worker2.postMessage({ cmd: 'start', array: array });
+    </script>
+</body>
+</html>
