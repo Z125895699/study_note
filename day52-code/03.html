@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <img src="./fugui.gif" alt=""> -->
+  <button>click</button>
+
+  <div style="width: 100px;height: 100px;background-color: red;"></div>
+
+  1111111
+</body>
+<script>
+
+
+  //task queue(FIFO)
+  //任务队列是先进先出的(FIFO)
+  console.log('hi')
+  setTimeout(() => {
+    console.log('0')
+  },0);
+  setTimeout(() => {
+    // console.log('推到毁')
+    console.log('1000')
+  },0);
+  // setTimeout(() => {
+  //   console.log('2000')
+  // },2000);
+  // setTimeout(() => {
+  //   console.log('3000')
+  // },3000);
+  // console.log('JSConfRU')
+
+  // Promise.resolve().then(() => console.log('hey'))
+  // console.log(1);
+
+  const btn = document.querySelector('button');
+  // const img = document.querySelector('img');
+  const box = document.querySelector('div');
+
+  console.log('btn',btn);
+  function loop(){
+    setTimeout(loop, 0);
+  }
+  // for(let i = 0; i < 10;i++){
+  //   const span =document.createElement('span');
+  //   document.body.appendChild(span);
+  //   span.textContent = 'span'
+  // }
+  btn.addEventListener('click',() => {
+    // console.log('btn',btn);
+    // document.body.appendChild(btn)
+    // btn.style.display = 'none'
+    // while(true);
+    // loop()
+    // img.style.display = 'none'
+    // img.style.display = 'block'
+    // img.style.display = 'none'
+    // img.style.display = 'block'
+    // img.style.display = 'none'
+    // img.style.display = 'block'
+    // img.style.display = 'none'
+
+    // box.style.transform = 'translateX(500px)'
+    // box.style.transition = 'transform 1s ease-in-out'
+    // // box.style.transform = 'translateX(50px)'
+
+    // requestAnimationFrame(()=>{
+    //   requestAnimationFrame(()=>{
+    //     box.style.transform = 'translateX(50px)'
+    //   })
+    // })
+//     setTimeout(() => {
+//   box.style.transform = 'translateX(50px)';
+// }, 2000);  // 50毫秒的延迟
+
+     Promise.resolve().then(()=>{
+        console.log('MicroTask1');
+     })
+     console.log('Listener1');
+  })
+
+  btn.addEventListener('click',()=>{
+    Promise.resolve().then(()=>{
+        console.log('MicroTask2');
+     })
+     console.log('Listener2');
+  })
+
+   </script>
+</html>
