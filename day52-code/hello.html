@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Hello WebAssembly</title>
+</head>
+
+<body>
+  <script>
+    // async function loadWasm() {
+    //   // Fetch and instantiate the module
+    //   const response = await fetch('hello.wasm');
+    //   const bytes = await response.arrayBuffer();
+    //   const { instance } = await WebAssembly.instantiate(bytes);
+
+    //   // Call the exported function and log the result
+    //   const result = instance.exports.hello();
+    //   console.log(`Hello, WebAssembly! The answer is: ${result}`);
+    // }
+
+    // loadWasm();
+
+    // function fib(n) {
+    //   if (n <= 1) return n;
+    //   return fib(n - 1) + fib(n - 2);
+    // }
+
+    // const startJS = performance.now();
+    // console.log('原生',fib(40));
+    // const endJS = performance.now();
+    // console.log(`JavaScript took ${endJS - startJS} milliseconds.`);
+
+
+    // async function runWasm() {
+    //   const response = await fetch('fib.wasm');
+    //   const buffer = await response.arrayBuffer();
+    //   const {instance} = await WebAssembly.instantiate(buffer);
+
+    //   const startWasm = performance.now();
+    //   console.log('wasm',instance.exports.fib(40));
+    //   const endWasm = performance.now();
+    //   console.log(`WebAssembly took ${endWasm - startWasm} milliseconds.`);
+    // }
+
+    // runWasm();
+
+
+
+    function fib1(n) {
+      if (n <= 1) return n;
+      return fib1(n - 1) + fib1(n - 2);
+    }
+
+    const startJS1 = performance.now();
+    console.log('fib1', fib1(40));
+    const endJS1 = performance.now();
+    console.log(`JavaScript took ${endJS1 - startJS1} milliseconds.`);
+
+
+    function fib2(n) {
+      let arr = [0, 1];
+      for (let i = 2; i <= n; i++) {
+        arr[i] = arr[i - 1] + arr[i - 2];
+      }
+      return arr[n];
+    }
+
+    const startJS2 = performance.now();
+    console.log('fib2', fib2(40));
+    const endJS2 = performance.now();
+    console.log(`JavaScript took ${endJS2 - startJS2} milliseconds.`);
+
+
+    function fib3(n) {
+      let a = 0, b = 1;
+      for (let i = 2; i <= n; i++) {
+        [a, b] = [b, a + b];
+      }
+      return b;
+    }
+
+    const startJS3 = performance.now();
+    console.log('fib3', fib3(40));
+    const endJS3 = performance.now();
+    console.log(`JavaScript took ${endJS3 - startJS3} milliseconds.`);
+
+
+  </script>
+</body>
+
+</html>
