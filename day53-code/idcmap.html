@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <title>数据中心资源地图</title>
+    <style>
+        html, body, #container {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    //机房图标
+    <img src="./idc.png" alt="Description of Image">
+    <script src="https://cache.amap.com/lbs/static/es5.min.js"></script>
+    <script src="https://webapi.amap.com/maps?v=2.0&key=15fb42891a0c984be8d419add21c0aa2"></script>
+
+    <script type="text/javascript">
+        // 初始化地图，设置地图样式为"远山黛"
+        var map = new AMap.Map('container', {
+            resizeEnable: true,
+            mapStyle: "amap://styles/whitesmoke", // 将样式修改为 "whitesmoke"
+            center: [121.421338, 31.17621],
+            zoom: 10,
+        });
+        // 创建一个 Icon 图标
+        var idcicon = new AMap.Icon({
+            size: new AMap.Size(40, 50),    // 图标尺寸
+            image: './idc.png',  // Icon的图像
+            imageOffset: new AMap.Pixel(0, -60),  // 图像相对展示区域的偏移量，适于雪碧图等
+            imageSize: new AMap.Size(40, 50)   // 根据所设置的大小拉伸或压缩图片
+        });
+        // 使用 JavaScript 发送 HTTP 请求获取数据
+        fetch('/get_data')
+            .then(response => response.json())
+            .then(json_idcxys => {
+                // 在地图上添加标记点
+                json_idcxys.forEach(dataCenter => {
+                    var marker = new AMap.Marker({
+                        position: [dataCenter.lng, dataCenter.lat],
+                        title: dataCenter.name,
+                        map: map,
+  
+                    });
+                });
+            });
+    map.add(idcicon);
+    </script>
+</body>
+
+</html>
