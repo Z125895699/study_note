@@ -36,20 +36,6 @@
             imageOffset: new AMap.Pixel(0, -60),  // 图像相对展示区域的偏移量，适于雪碧图等
             imageSize: new AMap.Size(40, 50)   // 根据所设置的大小拉伸或压缩图片
         });
-        // 使用 JavaScript 发送 HTTP 请求获取数据
-        // fetch('/get_data')
-        //     .then(response => response.json())
-        //     .then(json_idcxys => {
-        //         // 在地图上添加标记点
-        //         json_idcxys.forEach(dataCenter => {
-        //             var marker = new AMap.Marker({
-        //                 position: [dataCenter.lng, dataCenter.lat],
-        //                 title: dataCenter.name,
-        //                 map: map,
-  
-        //             });
-        //         });
-        //     });
     map.add(idcicon);
     </script>
 </body>
