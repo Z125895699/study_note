@@ -43,11 +43,12 @@ class EventBus {
 // 创建一个事件总线实例
 const eventBus = new EventBus();
 
-// 订阅事件
+
 function handleCustomEvent(data) {
   console.log('订阅事件', data);
 }
 
+// 订阅事件
 eventBus.subscribe('custom-event', handleCustomEvent);
 
 // 发布事件
