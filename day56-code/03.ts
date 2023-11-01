@@ -2,7 +2,6 @@ type JSONValue = null | boolean | number | string | JSONValue[] | { [key: string
 type Obj = JSONValue | Record<string, JSONValue> | Array<JSONValue>;
 
 function compactObject(obj: Obj): Obj {
-
     if (Array.isArray(obj)) {
         return obj.reduce((acc: JSONValue[], cur: JSONValue) => {
             let value = compactObject(cur);

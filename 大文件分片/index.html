@@ -37,6 +37,7 @@
         let uploadedChunks = new Set();  // 用于记录已经上传的分片
         let serverUrl = 'http://127.0.0.1:3000';  // 后端服务器地址和端口
 
+        // 选择文件
         document.getElementById('file').addEventListener('change', function () {
             file = this.files[0];
             worker.postMessage(file);
@@ -52,6 +53,7 @@
             console.log('chunksCount', file, chunksCount)
         });
 
+        // 检查文件上传状态
         async function checkStatus(filename) {
             let response = await fetch(`${serverUrl}/status?filename=${filename}`);
             let {uploaded} = await response.json();
@@ -60,12 +62,14 @@
             uploaded.forEach(index => uploadedChunks.add(index));
         }
 
+        // 更新进度条
         function updateProgressBar(percentage) {
             const progressBar = document.getElementById('progressBar');
             progressBar.style.width = percentage + '%';
             progressBar.textContent = percentage + '%';
         }
 
+        // 上传分片
         async function uploadChunk(chunk, index, filename) {
             if (uploadedChunks.has(index)) {
                 return;  // 如果该分片已经上传，跳过
@@ -109,6 +113,7 @@
             };
         }
 
+        // 开始上传
         async function startUpload(event) {
             if (!file) {
                 alert('Please select a file!');

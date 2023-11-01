@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preload Example</title>
+    
+    <!-- 预加载JS脚本 High-->
+    <link rel="preload" href="./main.js" as="script">
+    <!-- 预加载字体 -->
+    <link rel="preload" href="蝉羽胡杨体.ttf" as="font" type="font/ttf" crossorigin>
+    <!-- 预加载图片 使用fetchPriority提高优先级 -->
+    <link rel="preload" href="fugui.jpg" as="image" fetchPriority="high">
+    <!-- 预加载CSS样式 -->
+    <link rel="preload" href="style.css" as="style">
+
+</head>
+<body>
+    <!-- 使用预加载的图片 -->
+    <img src="fugui.jpg" alt="Preloaded Image">
+
+    <!-- 使用预加载的CSS -->
+    <link href="style.css" rel="stylesheet">
+
+    <!-- 使用预加载的JS -->
+    <script src="main.js"></script>
+</body>
+</html>
