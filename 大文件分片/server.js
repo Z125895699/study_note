@@ -42,8 +42,8 @@ app.get('/status', (req, res) => {
 });
 
 app.post('/merge', express.json(), async (req, res) => {
-    const { filename, chunksCount } = req.body;
-    // console.log(`Starting to merge file ${filename}`); // 打印开始合并文件的信息
+    const { filename, chunksCount,hash } = req.body;
+    console.log(`Starting to merge file ${filename} ${hash}`); // 打印开始合并文件的信息
     const filePath = path.resolve('uploads', filename);
     const writeStream = fs.createWriteStream(filePath);
 

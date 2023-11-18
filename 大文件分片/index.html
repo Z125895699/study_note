@@ -23,15 +23,15 @@
 <body>
     <input type="file" id="file">
     <button  onclick="startUpload()">Upload</button>
-    <div id="progressBarContainer">
+    <!-- <div id="progressBarContainer">
         <div id="progressBar">0%</div>
-    </div>
+    </div> -->
     <script>
-        var worker = new Worker('worker.js');
-        console.log(worker, 'worker')
+        // var worker = new Worker('worker.js');
+        // console.log(worker, 'worker')
         let file;
         let fileSize;
-        let chunkSize = 1024 * 1024 * 10; // 分片大小10MB
+        let chunkSize = 1024 * 1024 * 1; // 分片大小10MB
         let chunksCount;
         let chunks;
         let uploadedChunks = new Set();  // 用于记录已经上传的分片
@@ -40,7 +40,7 @@
         // 选择文件
         document.getElementById('file').addEventListener('change', function () {
             file = this.files[0];
-            worker.postMessage(file);
+            // worker.postMessage(file);
 
             // worker.onmessage = function(e) {
             //     console.log('e.data',e.data)
@@ -63,13 +63,16 @@
         }
 
         // 更新进度条
-        function updateProgressBar(percentage) {
-            const progressBar = document.getElementById('progressBar');
-            progressBar.style.width = percentage + '%';
-            progressBar.textContent = percentage + '%';
-        }
+        // function updateProgressBar(percentage) {
+        //     const progressBar = document.getElementById('progressBar');
+        //     progressBar.style.width = percentage + '%';
+        //     progressBar.textContent = percentage + '%';
+        // }
 
         // 上传分片
+        const spark = new SparkMD5.ArrayBuffer();
+        let loadedChunks = 0;
+
         async function uploadChunk(chunk, index, filename) {
             if (uploadedChunks.has(index)) {
                 return;  // 如果该分片已经上传，跳过
@@ -79,16 +82,15 @@
             let reader = new FileReader();
             reader.readAsArrayBuffer(chunk);
             reader.onload = async function (e) {
-                let arrayBuffer = e.target.result;
-                console.log(new Uint8Array(arrayBuffer).slice(0, 5));  // 打印分片的前5个字节
-                let hash = SparkMD5.ArrayBuffer.hash(arrayBuffer)  + "-" + index;
+
+                loadedChunks++;
+                spark.append(e.target.result);  // 将分片数据追加到SparkMD5实例
 
                 let formData = new FormData();
+                
                 formData.append('chunk', chunk);
                 formData.append('index', index);
                 formData.append('filename', filename);
-                formData.append('hash', hash);  // 添加哈希值到 formData
-                console.log(`Chunk ${index} hash: ${hash}`);
 
                 await fetch(`${serverUrl}/upload`, {
                     method: 'POST',
@@ -97,16 +99,18 @@
                 uploadedChunks.add(index);  // 标记该分片已经上传
 
                 // 更新进度条
-                let percentage = (uploadedChunks.size / chunksCount) * 100;
-                updateProgressBar(percentage.toFixed(2));
+                // let percentage = (uploadedChunks.size / chunksCount) * 100;
+                // updateProgressBar(percentage.toFixed(2));
 
                 // 如果所有分片都上传了，请求合并
                 if (uploadedChunks.size === chunksCount) {
+                    const totalHash = spark.end();  // 计算整个文件的哈希
+                    console.log(`File hash: ${totalHash}`);
                     console.log('合并');
                     let response = await fetch(`${serverUrl}/merge`, {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({filename, chunksCount})
+                        body: JSON.stringify({filename, chunksCount,hash: totalHash})
                     });
                     console.log('await response.json()', await response.json());
                 }

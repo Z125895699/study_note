@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Highlight Keywords</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div id="jsContent">
+        <!-- 初始内容 -->
+        前端开发是一个有趣的领域，前端开发人员需要掌握前端技术，如HTML、CSS和JavaScript。
+    </div>
+ 
+    <script>
+        function highlightKeywords(keywords) {
+            var contentNode = document.getElementById("jsContent");
+            var content = contentNode.textContent || contentNode.innerText;
+ 
+            // 将关键词按照长度降序排序，以确保更长的词先匹配
+            keywords.sort(function(a, b) {
+                return b.length - a.length;
+            });
+            console.log(keywords);
+ 
+            // 遍历关键词并高亮
+            keywords.forEach(function(keyword) {
+                var regex = new RegExp(keyword, 'gi');
+                content = content.replace(regex, function(match) {
+                    return '<span class="highlight">' + match + '</span>';
+                });
+            });
+ 
+            contentNode.innerHTML = content;
+        }
+ 
+        // 调用highlight函数并传入关键词
+        highlightKeywords(["前端", "前端开发", "开发"]);
+ 
+        // 示例：系统插入随机文本后，自动调用highlight
+        setTimeout(function() {
+            var randomText = "前端开发的工作很重要，前端开发需要不断学习前端技术。";
+            document.getElementById("jsContent").textContent = randomText;
+            highlightKeywords(["前端", "前端开发", "开发"]);
+        }, 2000);
+    </script>
+</body>
+</html>
