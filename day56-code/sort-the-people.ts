@@ -12,9 +12,7 @@ function sortPeople(names: string[], heights: number[]): string[] {
   });
   combined.sort((a, b) => b.height - a.height)
 
-  return combined.map((item,_,array)=>{
-    return item.name
-  })
+  return combined.map((item)=>item.name)
 };
 const names = ["Mary","John","Emma"] 
 const heights = [170,165,180]
