@@ -7,6 +7,7 @@ function cleanObject(obj: any): any {
   } else if (typeof obj === 'object' && obj !== null) {
     // 处理对象
     const cleanObj: { [key: string]: any } = {};
+    
     Object.keys(obj).forEach(key => {
       const value = obj[key];
       if (Boolean(value)) {
