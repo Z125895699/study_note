@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="./index.css"> -->
+</head>
+<body>
+  <main>
+    <section>
+      <h1>Next.js on Vercel</h1>
+      <span
+        >Vercel is the native Next.js platform, designed to enhance the
+        Next.js experience.</span
+      >
+      <p>
+        Next.js is a fullstack React framework for the web, maintained by
+        Vercel.
+      </p>
+      <p>
+        While Next.js works when self-hosting, deploying to Vercel is
+        zero-configuration and provides additional enhancements for
+        <span
+            >scalability, availability, and performance globally.</span
+          >
+      </p>
+    </section>
+    <section>
+      <h2 id="getting-started">Getting started</h2>
+      <p>There are multiple ways to get started with Next.js on Vercel:</p>
+      <ul>
+        <li>
+          If you already have a project with Next.js, install Vercel CLI and
+          run the vercel command from your project&#39;s root directory
+        </li>
+        <li>
+          Clone one of our Next.js example repos to your favorite git provider
+          and deploy it on Vercel with the button below:
+        </li>
+        <li>Or, choose a template from Vercel&#39;s marketplace:</li>
+      </ul>
+      <p>
+        <span
+            >Vercel deployments can integrate with your git provider to
+            generate preview URLs for each pull request you make</span
+          >
+        to your Next.js project.
+      </p>
+    </section>
+    <section>
+      <h2 id="incremental-static-regeneration">
+        Incremental Static Regeneration
+      </h2>
+      <p>
+        Incremental Static Regeneration (ISR) allows you to
+        <span
+            >create or update content without redeploying your site</span
+          >. ISR has three main benefits for developers: better performance,
+        improved security, and faster build times.
+      </p>
+      <p>
+        When self-hosting, (ISR) is limited to a single region workload.
+        Statically generated pages are not distributed closer to visitors by
+        default, without additional configuration or vendoring of a CDN. By
+        default, self-hosted ISR does not persist generated pages to durable
+        storage. Instead, these files are located in the Next.js cache (which
+        expires).
+      </p>
+      <p>
+        <span
+            >To enable ISR with Next.js in the app router, add an options
+            object with a revalidate property to your fetch requests</span
+          >.
+      </p>
+      <p>To summarize, using ISR with Next.js on Vercel:</p>
+      <ul>
+        <li>Better performance with our global Edge Network</li>
+        <li>
+          Zero-downtime rollouts to previously statically generated pages
+        </li>
+        <li>
+          Framework-aware infrastructure enables global content updates in
+          300ms
+        </li>
+        <li>
+          Generated pages are both cached and persisted to durable storage
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2 id="server-side-rendering-ssr-">Server-Side Rendering (SSR)</h2>
+      <p>
+        Server-Side Rendering (SSR) allows you to render pages dynamically on
+        the server. This is useful for pages where the rendered data needs to
+        be unique on every request. For example, checking authentication or
+        looking at the location of an incoming request.
+      </p>
+      <p>
+        On Vercel,
+        <span
+            >you can server-render Next.js applications in either the Node.js
+            runtime (default) with Serverless Functions or the Edge runtime
+            with Edge Functions</span
+          >. This allows you to pick the best rendering strategy on a per-page
+        basis.
+      </p>
+      <p>To summarize, SSR with Next.js on Vercel:</p>
+      <ul>
+        <li>Scales to zero when not in use</li>
+        <li>Scales automatically with traffic increases</li>
+        <li>
+          Has zero-configuration support for Cache-Control headers, including
+          stale-while-revalidate
+        </li>
+        <li>
+          Framework-aware infrastructure enables switching rendering between
+          Edge/Node.js runtimes
+        </li>
+      </ul>
+    </section>
+    <section>
+      <h2 id="image-optimization">Image Optimization</h2>
+      <p>
+        Image Optimization helps you achieve faster page loads by reducing the
+        size of images and using modern image formats.
+      </p>
+      <p>
+        When deploying to Vercel,
+        <span>images are automatically optimized on demand</span>, keeping your build times fast while improving your page load
+        performance and Core Web Vitals.
+      </p>
+      <p>
+        When self-hosting, Image Optimization uses the default Next.js server
+        for optimization. This server manages the rendering of pages and
+        serving of static files.
+      </p>
+      <p>
+        To use Image Optimization with Next.js on Vercel,
+        <span
+            >import the next/image component into the component you&#39;d like
+            to add an image to</span
+          >.
+      </p>
+      <p>To summarize, using Image Optimization with Next.js on Vercel:</p>
+      <ul>
+        <li>Zero-configuration Image Optimization when using next/image</li>
+        <li>Helps your team ensure great performance by default</li>
+        <li>
+          <span
+              >Keeps your builds fast by optimizing images on-demand</span
+            >
+        </li>
+        <li>Requires No additional services needed to procure or set up</li>
+      </ul>
+    </section>
+    <hr />
+    <p>
+      <a href="https://vercel.com/docs/frameworks/nextjs"
+        >Check out the Vercel Docs for more.</a
+      >
+    </p>
+  </main>
+  <script src="./index.js"></script>
+</body>
+</html>

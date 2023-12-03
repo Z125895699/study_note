@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "Geist Sans";
+  src: url("https://assets.codepen.io/605876/GeistVF.ttf") format("truetype");
+}
+
+h1,h2 {
+	color: hsl(0 0% 6%);
+	--lightness: 80%; /* 初始化 CSS 变量 */
+	--highlighted: 0; /* 使用 JavaScript 来更新这个值 */
+	--highlight: hsl(var(--hue, 45) 80% var(--lightness));
+	background: transparent;
+}
+
+h1,h2 {
+	background: linear-gradient(120deg, var(--highlight, lightblue) 50%, transparent 50%) 110% 0 / 200% 100% no-repeat;
+	background-position: calc((1 - var(--highlighted)) * 110%) 0;
+	transition: background-position 1s;
+}
